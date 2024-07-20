@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04D0B71D2C4B57E0002478D2 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D0B71C2C4B57E0002478D2 /* CameraView.swift */; };
 		811E61442C4B4FAB006EFB68 /* PetPalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61432C4B4FAB006EFB68 /* PetPalApp.swift */; };
 		811E61462C4B4FAB006EFB68 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61452C4B4FAB006EFB68 /* ContentView.swift */; };
 		811E61482C4B4FAE006EFB68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811E61472C4B4FAE006EFB68 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04D0B71C2C4B57E0002478D2 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		811E61402C4B4FAB006EFB68 /* PetPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		811E61432C4B4FAB006EFB68 /* PetPalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetPalApp.swift; sourceTree = "<group>"; };
 		811E61452C4B4FAB006EFB68 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				811E61432C4B4FAB006EFB68 /* PetPalApp.swift */,
 				811E61452C4B4FAB006EFB68 /* ContentView.swift */,
+				04D0B71C2C4B57E0002478D2 /* CameraView.swift */,
 				811E61472C4B4FAE006EFB68 /* Assets.xcassets */,
 				811E61492C4B4FAE006EFB68 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D0B71D2C4B57E0002478D2 /* CameraView.swift in Sources */,
 				811E61462C4B4FAB006EFB68 /* ContentView.swift in Sources */,
 				811E61442C4B4FAB006EFB68 /* PetPalApp.swift in Sources */,
 			);
