@@ -61,9 +61,7 @@
 				811E61452C4B4FAB006EFB68 /* ContentView.swift */,
 				5A756FF62C4B51DA007F8021 /* PetRegistration1View.swift */,
 				04D0B71C2C4B57E0002478D2 /* CameraView.swift */,
-
 				819051F42C4B52F8008C007E /* Home Page.swift */,
-
 				811E61472C4B4FAE006EFB68 /* Assets.xcassets */,
 				811E61492C4B4FAE006EFB68 /* Preview Content */,
 			);
@@ -288,6 +286,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PetPal/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -316,6 +315,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PetPal/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

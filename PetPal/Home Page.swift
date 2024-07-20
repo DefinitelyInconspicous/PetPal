@@ -42,6 +42,7 @@ struct Home_Page: View {
             Rectangle()
                 .frame(width: 350, height: 170)
             Spacer()
+            
         }
     }
 }
