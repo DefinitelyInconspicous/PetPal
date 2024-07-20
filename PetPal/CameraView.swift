@@ -63,29 +63,56 @@ struct CameraView: View {
                     
                 }.frame(height: 75)
             }
-        }
+        }.onAppear(perform: {
+            camera.Check()
+        })
     }
 }
 class CameraModel: ObservableObject{
     @Published var isTaken = false
-//    @Published var session = AVCaptureSession()
-//    func setUp(){
-//        switch AVCaptureDevice.authorizationStatus(for:.video){
-//        case.authorized:
-//            setUp()
-//            return
-//        case.notDetermined:
-//            AVCaptureDevice.requestAccess(for: .video){ (status) in
-//            }
-//            
-//        case .restricted:
-//            <#code#>
-//        case .denied:
-//            <#code#>
-//        @unknown default:
-//            <#code#>
-//        }
-//    }
+    @Published var session = AVCaptureSession()
+    @Published var alert = false
+    @Published var output  = AVCapturePhotoOutput()
+    func Check(){
+        
+        switch AVCaptureDevice.authorizationStatus(for:.video){
+        case.authorized:
+            setUp()
+            return
+        case.notDetermined:
+            AVCaptureDevice.requestAccess(for: .video){ (status) in
+                if status{
+                    self.setUp()
+                }
+            }
+            
+        case .denied:
+            self.alert.toggle()
+            return
+        default:
+            return
+        }
+    }
+    func setUp(){
+        do{
+            self.session.beginConfiguration()
+            
+            // CHANGE FOR DEVICE
+            let device = AVCaptureDevice.default(.builtInDualCamera,for: .video,position: .back)
+            let input = try AVCaptureDeviceInput(device: device!)
+            //checking and adding to session
+            if self.session.canAddInput(input){
+                self.session.addInput(input)
+            }
+            if self.session.canAddOutput(output){
+                self.session.addOutput(output)
+            }
+            self.session.commitConfiguration()
+        }
+        catch{
+            print(error.localizedDescription)
+        }
+    }
 }
 #Preview {
     CameraView()

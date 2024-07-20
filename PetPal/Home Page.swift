@@ -71,6 +71,7 @@ struct Home_Page: View {
                 
             }
             Spacer()
+            
         }
     }
 }
