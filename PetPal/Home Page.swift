@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct Home_Page: View {
-    var textColour = Color(red: 34, green: 53, blue: 64)
+    var textColour = Color(red: 34 / 255, green: 53 / 255, blue: 64 / 255)
     @State var username = "John"
     
     var body: some View {
@@ -21,7 +21,7 @@ struct Home_Page: View {
                     .fontWeight(.heavy)
                     .fontDesign(.rounded)
                     .padding()
-                    //.foregroundStyle(textColour)
+                    .foregroundColor(textColour)
                 Spacer()
                 
                 // MARK: - Add Daily Sticker
@@ -31,9 +31,11 @@ struct Home_Page: View {
                     .fontWeight(.heavy)
                     .fontDesign(.rounded)
                     .padding()
+                    .foregroundColor(textColour)
             }
             Rectangle()
                 .frame(width: 6000 , height: 4)
+                .foregroundColor(textColour)
             Text("Welcome Back \(username)!")
                 .font(.title2)
                 .fontWeight(.medium)

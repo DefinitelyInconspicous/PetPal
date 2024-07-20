@@ -68,24 +68,24 @@ struct CameraView: View {
 }
 class CameraModel: ObservableObject{
     @Published var isTaken = false
-    @Published var session = AVCaptureSession()
-    func setUp(){
-        switch AVCaptureDevice.authorizationStatus(for:.video){
-        case.authorized:
-            setUp()
-            return
-        case.notDetermined:
-            AVCaptureDevice.requestAccess(for: .video){ (status) in
-            }
-            
-        case .restricted:
-            <#code#>
-        case .denied:
-            <#code#>
-        @unknown default:
-            <#code#>
-        }
-    }
+//    @Published var session = AVCaptureSession()
+//    func setUp(){
+//        switch AVCaptureDevice.authorizationStatus(for:.video){
+//        case.authorized:
+//            setUp()
+//            return
+//        case.notDetermined:
+//            AVCaptureDevice.requestAccess(for: .video){ (status) in
+//            }
+//            
+//        case .restricted:
+//            <#code#>
+//        case .denied:
+//            <#code#>
+//        @unknown default:
+//            <#code#>
+//        }
+//    }
 }
 #Preview {
     CameraView()
