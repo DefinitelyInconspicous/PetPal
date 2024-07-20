@@ -8,19 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		04D0B71D2C4B57E0002478D2 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D0B71C2C4B57E0002478D2 /* CameraView.swift */; };
+		5A756FF72C4B51DA007F8021 /* PetRegistration1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A756FF62C4B51DA007F8021 /* PetRegistration1View.swift */; };
 		811E61442C4B4FAB006EFB68 /* PetPalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61432C4B4FAB006EFB68 /* PetPalApp.swift */; };
 		811E61462C4B4FAB006EFB68 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61452C4B4FAB006EFB68 /* ContentView.swift */; };
 		811E61482C4B4FAE006EFB68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811E61472C4B4FAE006EFB68 /* Assets.xcassets */; };
 		811E614B2C4B4FAE006EFB68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811E614A2C4B4FAE006EFB68 /* Preview Assets.xcassets */; };
+		819051F52C4B52F8008C007E /* Home Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819051F42C4B52F8008C007E /* Home Page.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04D0B71C2C4B57E0002478D2 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		5A756FF62C4B51DA007F8021 /* PetRegistration1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegistration1View.swift; sourceTree = "<group>"; };
 		811E61402C4B4FAB006EFB68 /* PetPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		811E61432C4B4FAB006EFB68 /* PetPalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetPalApp.swift; sourceTree = "<group>"; };
 		811E61452C4B4FAB006EFB68 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		811E61472C4B4FAE006EFB68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		811E614A2C4B4FAE006EFB68 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		819051F42C4B52F8008C007E /* Home Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home Page.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +59,11 @@
 			children = (
 				811E61432C4B4FAB006EFB68 /* PetPalApp.swift */,
 				811E61452C4B4FAB006EFB68 /* ContentView.swift */,
+				5A756FF62C4B51DA007F8021 /* PetRegistration1View.swift */,
 				04D0B71C2C4B57E0002478D2 /* CameraView.swift */,
+
+				819051F42C4B52F8008C007E /* Home Page.swift */,
+
 				811E61472C4B4FAE006EFB68 /* Assets.xcassets */,
 				811E61492C4B4FAE006EFB68 /* Preview Content */,
 			);
@@ -140,9 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A756FF72C4B51DA007F8021 /* PetRegistration1View.swift in Sources */,
 				04D0B71D2C4B57E0002478D2 /* CameraView.swift in Sources */,
 				811E61462C4B4FAB006EFB68 /* ContentView.swift in Sources */,
 				811E61442C4B4FAB006EFB68 /* PetPalApp.swift in Sources */,
+				819051F52C4B52F8008C007E /* Home Page.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
