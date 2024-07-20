@@ -21,7 +21,7 @@ struct Home_Page: View {
                     .fontWeight(.heavy)
                     .fontDesign(.rounded)
                     .padding()
-                    .foregroundColor(textColour)
+                    //.foregroundStyle(textColour)
                 Spacer()
                 
                 // MARK: - Add Daily Sticker
@@ -34,8 +34,11 @@ struct Home_Page: View {
             }
             Rectangle()
                 .frame(width: 6000 , height: 4)
-            Text("Welcome Back \(username)")
-            
+            Text("Welcome Back \(username)!")
+                .font(.title2)
+                .fontWeight(.medium)
+            Rectangle()
+                .frame(width: 350, height: 170)
             Spacer()
         }
     }
