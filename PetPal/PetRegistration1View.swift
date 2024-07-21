@@ -20,45 +20,47 @@ struct PetRegistration1View: View {
     var body: some View {
         NavigationView{
             VStack{
-                LabeledContent {
-                  TextField("Name", text: $setPetName)
-                } label: {
-                  Text("Pet Name")
-                }
-                LabeledContent {
-                  TextField("Type", text: $setPetType)
-                } label: {
-                  Text("Pet Type")
-                }
-                LabeledContent {
-                  TextField("Breed", text: $setBreed)
-                } label: {
-                  Text("Pet Breed")
-                }
-                LabeledContent{
-                    Stepper("\(setWeight) kg", value: $setWeight, step: 1)
-                }label:{
-                    Text("Weight")
-                }
-                LabeledContent{
-                    Stepper("\(setAge) years", value: $setAge, step: 1)
-                }label:{
-                    Text("Age")
-                }
-                LabeledContent {
-                  TextField("Diet", text: $setDiet)
-                } label: {
-                  Text("Pet Diet")
-                }
-                LabeledContent{
-                    Toggle(setGender ? "Male" : "Female", isOn: $setGender)
-                }label:{
-                    Text("Gender")
-                }
-                DatePicker(selection: $birthDate, in: ...Date.now, displayedComponents: .date) {
+                List{
+                    LabeledContent {
+                        TextField("Name", text: $setPetName)
+                    } label: {
+                        Text("Pet Name")
+                    }
+                    LabeledContent {
+                        TextField("Type", text: $setPetType)
+                    } label: {
+                        Text("Pet Type")
+                    }
+                    LabeledContent {
+                        TextField("Breed", text: $setBreed)
+                    } label: {
+                        Text("Pet Breed")
+                    }
+                    LabeledContent{
+                        Stepper("\(setWeight) kg", value: $setWeight, step: 1)
+                    }label:{
+                        Text("Weight")
+                    }
+                    LabeledContent{
+                        Stepper("\(setAge) years", value: $setAge, step: 1)
+                    }label:{
+                        Text("Age")
+                    }
+                    LabeledContent {
+                        TextField("Diet", text: $setDiet)
+                    } label: {
+                        Text("Pet Diet")
+                    }
+                    LabeledContent{
+                        Toggle(setGender ? "Male" : "Female", isOn: $setGender)
+                    }label:{
+                        Text("Gender")
+                    }
+                    DatePicker(selection: $birthDate, in: ...Date.now, displayedComponents: .date) {
                         Text("Select date of birth")
-                            }
-                Toggle("Sterilised", isOn: $setSterile)
+                    }
+                    Toggle("Sterilised", isOn: $setSterile)
+                }
             }
         }
         .navigationTitle("Register your pet!")
