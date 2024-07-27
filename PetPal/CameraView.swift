@@ -94,25 +94,28 @@ class CameraModel: ObservableObject{
         }
     }
     func setUp(){
-        do{
+        
+            
             self.session.beginConfiguration()
             
             // CHANGE FOR DEVICE
-            let device = AVCaptureDevice.default(.builtInDualCamera,for: .video,position: .back)
-            let input = try AVCaptureDeviceInput(device: device!)
-            //checking and adding to session
-            if self.session.canAddInput(input){
-                self.session.addInput(input)
+            do {
+                let device = AVCaptureDevice.default(.builtInDualCamera,for: .video,position: .back)
+                if device != nil {
+                    let input = try AVCaptureDeviceInput(device: device!)
+                    //checking and adding to session
+                    if self.session.canAddInput(input){
+                        self.session.addInput(input)
+                    }
+                    if self.session.canAddOutput(output){
+                        self.session.addOutput(output)
+                    }
+                    self.session.commitConfiguration()
+                } 
+            } catch{
+                print(error.localizedDescription)
             }
-            if self.session.canAddOutput(output){
-                self.session.addOutput(output)
-            }
-            self.session.commitConfiguration()
         }
-        catch{
-            print(error.localizedDescription)
-        }
-    }
 }
 #Preview {
     CameraView()
