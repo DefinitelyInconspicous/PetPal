@@ -22,7 +22,7 @@ struct PassportScreen1: View {
         NavigationView{
             VStack{
                 List{
-                    LabeledContent {
+                    /*LabeledContent {
                     } label: {
                         Text("Pet Name")
                     }
@@ -51,7 +51,7 @@ struct PassportScreen1: View {
                     }label:{
                         Text("Gender")
                     }
-                    
+                    */
                   
                 }
             }
