@@ -9,10 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            
-        }
-        .padding()
+        Home_Page(weightData: [weightCell(weight: 0, date: 0)])
     }
 }
 

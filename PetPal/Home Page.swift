@@ -20,60 +20,118 @@ struct Home_Page: View {
     @State var timeGraph = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]
     @State var weightData: [weightCell]
     @State var weightCount = 0
-    
+    @State var streakDays = 0
     var body: some View {
-        VStack{
-            HStack {
-                Text("Pet")
-                    .font(Font.system(size:60, design: .rounded))
-                    .fontWeight(.heavy)
-                    .fontDesign(.rounded)
-                    .padding()
-                    .foregroundColor(textColour)
-                Spacer()
-                
-                // MARK: - Add Daily Sticker
-                
-                Text("Pal")
-                    .font(Font.system(size:60, design: .rounded))
-                    .fontWeight(.heavy)
-                    .fontDesign(.rounded)
-                    .padding()
-                    .foregroundColor(textColour)
-            }
-            Rectangle()
-                .frame(width: 6000 , height: 4)
-                .foregroundColor(textColour)
-            Text("Welcome Back \(username)!")
-                .font(.title2)
-                .fontWeight(.medium)
-            ZStack {
+        NavigationStack {
+            VStack{
+                HStack {
+                    Text("Pet")
+                        .font(Font.system(size:60, design: .rounded))
+                        .fontWeight(.heavy)
+                        .fontDesign(.rounded)
+                        .padding()
+                        .foregroundColor(textColour)
+                    Spacer()
+                    
+                    // MARK: - Add Daily Sticker
+                    
+                    Text("Pal")
+                        .font(Font.system(size:60, design: .rounded))
+                        .fontWeight(.heavy)
+                        .fontDesign(.rounded)
+                        .padding()
+                        .foregroundColor(textColour)
+                }
                 Rectangle()
-                VStack {
-                 Text("Your Pet's Weight over the Months")
-                        .font(.headline)
-                        .foregroundStyle(.black)
-                    Chart {
-                        ForEach(0..<20, id: \.self ) { index in
-                            LineMark(
-                                x: .value("Date", timeGraph[index]),
-                                y: .value("Weight", weightGraph[index])
-                            )
+                    .frame(width: 6000 , height: 4)
+                    .foregroundColor(textColour)
+                Text("Welcome Back \(username)!")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                ZStack {
+                    Rectangle()
+                    VStack {
+                        Text("Your Pet's Weight over the Months")
+                            .font(.headline)
                             .foregroundStyle(.black)
+                        Chart {
+                            ForEach(0..<20, id: \.self ) { index in
+                                LineMark(
+                                    x: .value("Date", timeGraph[index]),
+                                    y: .value("Weight", weightGraph[index])
+                                )
+                                .foregroundStyle(.black)
+                            }
+                        }
+                        .frame(width: 330, height: 120)
+                    }
+                    
+                }
+                .frame(width: 350, height: 200)
+                .cornerRadius(20)
+                .foregroundColor(rectColour)
+                
+                HStack {
+                    Button {
+                        NavigationLink("Camera View") {
+                            CameraView()
+                        }
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
+                                .cornerRadius(20)
+                                .frame(width: 150, height: 120)
+                            VStack {
+                                HStack {
+                                    Image(systemName: "flame.fill")
+                                        .foregroundStyle(.black)
+                                        .font(.system(size: 50))
+                                    Text("\(streakDays) \n Days")
+                                        .foregroundStyle(.black)
+                                        .fontWeight(.semibold)
+                                }
+                                Text("Petography")
+                                    .foregroundStyle(.black)
+                                    .bold()
+                                    .font(.title2)
+                            }
                         }
                     }
-                    .frame(width: 330, height: 120)
+                    Button {
+                        NavigationLink("Camera View") {
+                            CameraView()
+                        }
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
+                                .cornerRadius(20)
+                                .frame(width: 150, height: 120)
+                            VStack {
+                                HStack {
+                                    Image(systemName: "flame.fill")
+                                        .foregroundStyle(.black)
+                                        .font(.system(size: 50))
+                                    Text("\(streakDays) \n Days")
+                                        .foregroundStyle(.black)
+                                        .fontWeight(.semibold)
+                                }
+                                Text("Petography")
+                                    .foregroundStyle(.black)
+                                    .bold()
+                                    .font(.title2)
+                            }
+                        }
+                    }
                 }
-                
             }
-            .frame(width: 350, height: 200)
-            .cornerRadius(20)
-            .foregroundColor(rectColour)
-            Spacer()
             
+            Spacer()
         }
     }
 }
+
 
 #Preview {
     Home_Page(weightData: [weightCell(weight: 0, date: 0)])
