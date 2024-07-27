@@ -14,55 +14,46 @@ struct PassportScreen1: View {
     @State var weight = 0
     //@State  var setAge = 0
     @State var diet = ""
-    @State var gender = false
+    @State var gender: Gender = .male
     @State var birthDate = Date.now
     @State var sterile = false
     @State var age = 0
+    @State var displayEditPage1 = false
+    enum Gender: String, CaseIterable, Identifiable {
+        case male, female, nonbinary
+        var id: Self { self }
+    }
     var body: some View {
         NavigationView{
             VStack{
                 List{
-                    /*LabeledContent {
-                    } label: {
-                        Text("Pet Name")
-                    }
-                    LabeledContent
-                    } label: {
-                        Text("Pet Type")
-                    }
-                    LabeledContent {
-                        
-                    } label: {
-                        Text("Pet Breed")
-                    }
-                    LabeledContent{
-                    
-                    }label:{
-                        Text("Weight")
-                    }
-                        Text("Age: \(age)")
-                    LabeledContent {
-                        
-                    } label: {
-                        Text("Pet Diet")
-                    }
-                    LabeledContent{
-                        
-                    }label:{
-                        Text("Gender")
-                    }
-                    */
-                  
+                    Text("Name: \(petName)")
+                    Text("Pet Type: \(petType)")
+                    Text("Pet Breed: \( breed)")
+                    Text("Weight: \(weight)")
+                    Text("Diet: \(diet)")
+                    Text("Gender: \(gender)")
+                    Text("Date of Birth: \(birthDate)")
+                    Text("Sterile: \(sterile ? "Yes" : "No")")
+                    Text("Age: \(age)")
                 }
             }
-        }
-        .navigationTitle("Pet Passport")
-        .onAppear(){
-            age = yearsBetweenDate(startDate: birthDate, endDate: Date())
+            .navigationTitle("Pet Passport")
+            .toolbar{
+                ToolbarItem(placement: .topBarLeading){
+                    Button{
+                        displayEditPage1 = true
+                    }label:{
+                        Image(systemName: "pencil")
+                    }
+                }
+            }
+            .onAppear(){
+                age = yearsBetweenDate(startDate: birthDate, endDate: Date())
+            }
         }
     }
 }
-
 #Preview {
     PassportScreen1()
 }

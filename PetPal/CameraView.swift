@@ -97,26 +97,28 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
         }
     }
     func setUp(){
-        
-            
+        do {
             self.session.beginConfiguration()
-            
-            // CHANGE FOR DEVICE
-            let device = AVCaptureDevice.default(.builtInTripleCamera,for: .video,position: .back)
-//           let input = try AVCaptureDeviceInput(device: device!)
-            let input = try AVCaptureDeviceInput(device: device!)
-            //checking and adding to session
-            if self.session.canAddInput(input){
-                self.session.addInput(input)
+
+            let device = AVCaptureDevice.default(.builtInDualCamera,for: .video,position: .back)
+            if device != nil {
+                let input = try AVCaptureDeviceInput(device: device!)
+                //checking and adding to session
+                if self.session.canAddInput(input){
+                    self.session.addInput(input)
+                }
+                if self.session.canAddOutput(output){
+                    self.session.addOutput(output)
+                }
+                self.session.commitConfiguration()
             }
-            if self.session.canAddOutput(output){
-                self.session.addOutput(output)
-            }
-            self.session.commitConfiguration()
-        }
-        catch{
+        } catch{
             print(error.localizedDescription)
         }
+    
+            
+                        
+            // CHANGE FOR DEVICE
     }
     
     func takePic(){
@@ -180,24 +182,7 @@ struct CameraPreview: UIViewRepresentable{
     func updateUIView(_ uiView: UIViewType, context: Context) {
         
     }
-            do {
-                let device = AVCaptureDevice.default(.builtInDualCamera,for: .video,position: .back)
-                if device != nil {
-                    let input = try AVCaptureDeviceInput(device: device!)
-                    //checking and adding to session
-                    if self.session.canAddInput(input){
-                        self.session.addInput(input)
-                    }
-                    if self.session.canAddOutput(output){
-                        self.session.addOutput(output)
-                    }
-                    self.session.commitConfiguration()
-                } 
-            } catch{
-                print(error.localizedDescription)
-            }
         }
-}
 #Preview {
     CameraView()
 }

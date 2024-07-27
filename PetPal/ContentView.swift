@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Home_Page(weightData: [weightCell(weight: 0, date: 0)])
+    }
 }
-
 #Preview {
-    ContentView
+    ContentView()
 }

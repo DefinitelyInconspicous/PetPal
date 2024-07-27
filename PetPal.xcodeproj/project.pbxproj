@@ -13,6 +13,7 @@
 		5A756FFA2C4B6EE9007F8021 /* PetRegistration2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A756FF92C4B6EE9007F8021 /* PetRegistration2View.swift */; };
 		5A756FFC2C54864A007F8021 /* PassportEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A756FFB2C54864A007F8021 /* PassportEditView.swift */; };
 		5A7570012C548F9E007F8021 /* PassportScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7570002C548F9E007F8021 /* PassportScreen1.swift */; };
+		5A7570032C54A6F5007F8021 /* PassportScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7570022C54A6F5007F8021 /* PassportScreen2.swift */; };
 		811E61442C4B4FAB006EFB68 /* PetPalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61432C4B4FAB006EFB68 /* PetPalApp.swift */; };
 		811E61462C4B4FAB006EFB68 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61452C4B4FAB006EFB68 /* ContentView.swift */; };
 		811E61482C4B4FAE006EFB68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811E61472C4B4FAE006EFB68 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		5A756FF92C4B6EE9007F8021 /* PetRegistration2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegistration2View.swift; sourceTree = "<group>"; };
 		5A756FFB2C54864A007F8021 /* PassportEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportEditView.swift; sourceTree = "<group>"; };
 		5A7570002C548F9E007F8021 /* PassportScreen1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportScreen1.swift; sourceTree = "<group>"; };
+		5A7570022C54A6F5007F8021 /* PassportScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportScreen2.swift; sourceTree = "<group>"; };
 		811E61402C4B4FAB006EFB68 /* PetPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		811E61432C4B4FAB006EFB68 /* PetPalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetPalApp.swift; sourceTree = "<group>"; };
 		811E61452C4B4FAB006EFB68 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			children = (
 				5A756FFB2C54864A007F8021 /* PassportEditView.swift */,
 				5A7570002C548F9E007F8021 /* PassportScreen1.swift */,
+				5A7570022C54A6F5007F8021 /* PassportScreen2.swift */,
 			);
 			path = Passport;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				5A756FFA2C4B6EE9007F8021 /* PetRegistration2View.swift in Sources */,
 				047900C02C549D13008F6513 /* PetographyView.swift in Sources */,
 				811E61462C4B4FAB006EFB68 /* ContentView.swift in Sources */,
+				5A7570032C54A6F5007F8021 /* PassportScreen2.swift in Sources */,
 				5A7570012C548F9E007F8021 /* PassportScreen1.swift in Sources */,
 				811E61442C4B4FAB006EFB68 /* PetPalApp.swift in Sources */,
 				819051F52C4B52F8008C007E /* Home Page.swift in Sources */,

@@ -23,10 +23,14 @@ struct PassportEditView: View {
     @State var setWeight: Double
     //@State  var setAge = 0
     @State var setDiet: String
-    @State var setGender: Bool
+    @State var setGender: Gender = .male
     @State var setBirthDate: Date
     @State var setSterile: Bool
     @State var age: Int
+    enum Gender: String, CaseIterable, Identifiable {
+        case male, female, nonbinary
+        var id: Self { self }
+    }
     var body: some View {
         NavigationView{
             VStack{
@@ -47,7 +51,7 @@ struct PassportEditView: View {
                         Text("Pet Breed")
                     }
                     LabeledContent{
-                        Stepper("\(setWeight) kg", value: $setWeight, step: 1)
+                        Stepper("\(setWeight) kg", value: $setWeight, step: 0.5)
                     }label:{
                         Text("Weight")
                     }
@@ -57,25 +61,24 @@ struct PassportEditView: View {
                     } label: {
                         Text("Pet Diet")
                     }
-                    LabeledContent{
-                        Toggle(setGender ? "Male" : "Female", isOn: $setGender)
-                    }label:{
-                        Text("Gender")
+                    Picker(selection: $setGender, label: Text("Gender")){
+                        Text("Male").tag(Gender.male)
+                        Text("Female").tag(Gender.female)
                     }
                     DatePicker(selection: $setBirthDate, in: ...Date.now, displayedComponents: .date) {
                         Text("Select date of birth")
                     }
                     Toggle("Sterilised", isOn: $setSterile)
                     
-                    Button{
-                        
-                    }label:{
-                        Text("Save Changes")
-                            .background(.blue)
-                            .foregroundStyle(.white)
-                            .padding()
-                    }
                     
+                    }
+                Button{
+                                        
+                }label:{
+                    Text("Save Changes")
+                        .background(.blue)
+                        .foregroundStyle(.white)
+                        .padding()
                 }
             }
         }
@@ -86,5 +89,5 @@ struct PassportEditView: View {
 }
 
 #Preview {
-    PassportEditView(setPetName: "n", setPetType: "z", setBreed: "x", setWeight: 20.0, setDiet: "dog meat", setGender: false, setBirthDate: Date(), setSterile: false, age: 10)
+    PassportEditView(setPetName: "", setPetType: "", setBreed: "", setWeight: 8.0, setDiet: "", setBirthDate: Date(), setSterile: false, age: 10)
 }
