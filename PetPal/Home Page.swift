@@ -43,39 +43,39 @@ struct Home_Page: View {
                         .foregroundColor(textColour)
                 }
                 Rectangle()
-                    .frame(width: 6000 , height: 4)
+                    .frame(height: 4)
                     .foregroundColor(textColour)
                 Text("Welcome Back \(username)!")
                     .font(.title2)
                     .fontWeight(.medium)
-                ZStack {
-                    Rectangle()
-                    VStack {
-                        Text("Your Pet's Weight over the Months")
-                            .font(.headline)
+                
+                
+                VStack {
+                    Text("Your Pet's Weight over the Months")
+                        .font(.headline)
+                        .foregroundStyle(.black)
+                    Chart {
+                        ForEach(0..<20, id: \.self ) { index in
+                            LineMark(
+                                x: .value("Date", timeGraph[index]),
+                                y: .value("Weight", weightGraph[index])
+                            )
                             .foregroundStyle(.black)
-                        Chart {
-                            ForEach(0..<20, id: \.self ) { index in
-                                LineMark(
-                                    x: .value("Date", timeGraph[index]),
-                                    y: .value("Weight", weightGraph[index])
-                                )
-                                .foregroundStyle(.black)
-                            }
                         }
-                        .frame(width: 330, height: 120)
                     }
+                    .frame(height: 120)
                     
                 }
-                .frame(width: 350, height: 200)
+                .padding()
+                .background(rectColour)
                 .cornerRadius(20)
-                .foregroundColor(rectColour)
+                .padding()
+              
                 
                 HStack {
-                    Button {
-                        NavigationLink("Camera View") {
-                            CameraView()
-                        }
+                    
+                    NavigationLink {
+                        CameraView()
                     } label: {
                         ZStack {
                             Rectangle()
@@ -97,11 +97,10 @@ struct Home_Page: View {
                                     .font(.title2)
                             }
                         }
+                        
                     }
-                    Button {
-                        NavigationLink("Camera View") {
-                            CameraView()
-                        }
+                    NavigationLink {
+                        CameraView()
                     } label: {
                         ZStack {
                             Rectangle()
@@ -123,7 +122,9 @@ struct Home_Page: View {
                                     .font(.title2)
                             }
                         }
+                        
                     }
+                    
                 }
             }
             
