@@ -43,6 +43,8 @@
 		5A756FF82C4B6E9C007F8021 /* Pet Registration */ = {
 			isa = PBXGroup;
 			children = (
+				5A756FF62C4B51DA007F8021 /* PetRegistration1View.swift */,
+				5A756FF92C4B6EE9007F8021 /* PetRegistration2View.swift */,
 			);
 			path = "Pet Registration";
 			sourceTree = "<group>";
@@ -68,8 +70,6 @@
 			children = (
 				811E61432C4B4FAB006EFB68 /* PetPalApp.swift */,
 				811E61452C4B4FAB006EFB68 /* ContentView.swift */,
-				5A756FF62C4B51DA007F8021 /* PetRegistration1View.swift */,
-				5A756FF92C4B6EE9007F8021 /* PetRegistration2View.swift */,
 				5A756FF82C4B6E9C007F8021 /* Pet Registration */,
 				04D0B71C2C4B57E0002478D2 /* CameraView.swift */,
 				819051F42C4B52F8008C007E /* Home Page.swift */,
