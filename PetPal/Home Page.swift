@@ -21,6 +21,8 @@ struct Home_Page: View {
     @State var weightData: [weightCell]
     @State var weightCount = 0
     @State var streakDays = 0
+    @State var col = Color(red: 0/255, green: 0/255, blue: 0/255)
+
     var body: some View {
         NavigationStack {
             VStack{
@@ -60,10 +62,17 @@ struct Home_Page: View {
                                 x: .value("Date", timeGraph[index]),
                                 y: .value("Weight", weightGraph[index])
                             )
-                            .foregroundStyle(.black)
+                            .foregroundStyle((weightGraph[index] > 27) || (weightGraph[index] < 10) ? Color(red:204/255, green:41/255, blue:0/255) : Color(red: 0/255, green: 0/255, blue: 0/255))
                         }
                     }
                     .frame(height: 120)
+//                    .onAppear() {
+//                        if (weightGraph[index] > 27) || (weightGraph[index] < 10) {
+//                            col = Color(red:204/255, green:41/255, blue:0/255)
+//                        } else {
+//                             col = Color(red: 0/255, green: 0/255, blue: 0/255)
+//                        }
+//                    }
                     
                 }
                 .padding()
@@ -131,6 +140,7 @@ struct Home_Page: View {
             Spacer()
         }
     }
+        
 }
 
 
