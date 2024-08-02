@@ -131,8 +131,9 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
         }
     }
     func reTake(){
-        DispatchQueue.global(qos:.background).async{
+        DispatchQueue.global(qos: .background).async{
             self.session.startRunning()
+            
             DispatchQueue.main.async {
                 withAnimation{self.isTaken.toggle()}
                 //clearing
@@ -146,9 +147,7 @@ class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
             return
         }
         print("picture taken")
-        guard let imageData = photo.fileDataRepresentation() else{
-            return
-        }
+        guard let imageData = photo.fileDataRepresentation() else{return}
         self.picData = imageData
     }
     func savePic(){

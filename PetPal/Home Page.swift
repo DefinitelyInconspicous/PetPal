@@ -84,7 +84,7 @@ struct Home_Page: View {
                 HStack {
                     
                     NavigationLink {
-                        CameraView()
+                        PetographyView()
                     } label: {
                         ZStack {
                             Rectangle()
@@ -109,7 +109,7 @@ struct Home_Page: View {
                         
                     }
                     NavigationLink {
-                        CameraView()
+                        PetographyView()
                     } label: {
                         ZStack {
                             Rectangle()
