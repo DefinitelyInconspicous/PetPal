@@ -16,12 +16,18 @@ struct PassportScreen1: View {
                     Text("Name: \(pet.petName)")
                     Text("Pet Type: \(pet.petType)")
                     Text("Pet Breed: \(pet.breed)")
-                    Text("Weight: \(pet.weight)")
+                    Text("Weight: \(pet.weight)kg")
                     Text("Diet: \(pet.diet)")
                     Text("Gender: \(pet.gender)")
                     Text("Date of Birth: \(pet.birthDate)")
                     Text("Sterile: \(pet.sterile ? "Yes" : "No")")
                     Text("Age: \(pet.age)")
+                }
+                NavigationLink{
+                    PassportScreen2()
+                }label:{
+                    Text("View Health Info")
+                        .background(.blue)
                 }
             }
             .navigationTitle("Pet Passport")

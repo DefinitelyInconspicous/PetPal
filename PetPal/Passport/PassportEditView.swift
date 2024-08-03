@@ -30,28 +30,28 @@ struct PassportEditView: View {
                     LabeledContent {
                         TextField("Name", text: $pet.petName)
                     } label: {
-                        Text("Pet Name")
+                        Text("Pet Name:")
                     }
                     LabeledContent {
                         TextField("Type", text: $pet.petType)
                     } label: {
-                        Text("Pet Type")
+                        Text("Pet Type:")
                     }
                     LabeledContent {
                         TextField("Breed", text: $pet.breed)
                     } label: {
-                        Text("Pet Breed")
+                        Text("Pet Breed:")
                     }
                     LabeledContent{
                         Stepper("\(pet.weight) kg", value: $pet.weight, step: 0.5)
                     }label:{
-                        Text("Weight")
+                        Text("Weight:")
                     }
                     Text("Age: \(pet.age)")
                     LabeledContent {
                         TextField("Diet", text: $pet.diet)
                     } label: {
-                        Text("Pet Diet")
+                        Text("Pet Diet:")
                     }
                     Picker(selection: $pet.gender, label: Text("Gender")){
                         Text("Male").tag(Gender.male)
@@ -65,7 +65,8 @@ struct PassportEditView: View {
                     
                     }
                 Button{
-                    
+                    presentationMode.wrappedValue
+                        .dismiss()
                 }label:{
                     Text("Save Changes")
                         .foregroundStyle(.blue)
