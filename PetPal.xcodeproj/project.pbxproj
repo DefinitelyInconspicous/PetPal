@@ -14,6 +14,7 @@
 		5A756FFC2C54864A007F8021 /* PassportEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A756FFB2C54864A007F8021 /* PassportEditView.swift */; };
 		5A7570012C548F9E007F8021 /* PassportScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7570002C548F9E007F8021 /* PassportScreen1.swift */; };
 		5A7570032C54A6F5007F8021 /* PassportScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7570022C54A6F5007F8021 /* PassportScreen2.swift */; };
+		5A75700B2C5DD936007F8021 /* Forever in Frameworks */ = {isa = PBXBuildFile; productRef = 5A75700A2C5DD936007F8021 /* Forever */; };
 		811E61442C4B4FAB006EFB68 /* PetPalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61432C4B4FAB006EFB68 /* PetPalApp.swift */; };
 		811E61462C4B4FAB006EFB68 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61452C4B4FAB006EFB68 /* ContentView.swift */; };
 		811E61482C4B4FAE006EFB68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811E61472C4B4FAE006EFB68 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A75700B2C5DD936007F8021 /* Forever in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +127,9 @@
 			dependencies = (
 			);
 			name = PetPal;
+			packageProductDependencies = (
+				5A75700A2C5DD936007F8021 /* Forever */,
+			);
 			productName = PetPal;
 			productReference = 811E61402C4B4FAB006EFB68 /* PetPal.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +158,9 @@
 				Base,
 			);
 			mainGroup = 811E61372C4B4FAB006EFB68;
+			packageReferences = (
+				5A7570092C5DD936007F8021 /* XCRemoteSwiftPackageReference "Forever" */,
+			);
 			productRefGroup = 811E61412C4B4FAB006EFB68 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -402,6 +410,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A7570092C5DD936007F8021 /* XCRemoteSwiftPackageReference "Forever" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jiachenyee/Forever";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A75700A2C5DD936007F8021 /* Forever */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A7570092C5DD936007F8021 /* XCRemoteSwiftPackageReference "Forever" */;
+			productName = Forever;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 811E61382C4B4FAB006EFB68 /* Project object */;
 }
