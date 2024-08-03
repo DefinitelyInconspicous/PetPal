@@ -4,38 +4,30 @@
 //
 //  Created by Calvin Abad on 27/7/24.
 //
-
 import SwiftUI
-
+import Forever
 struct PassportScreen1: View {
-    @State var petName = ""
-    @State var petType = ""
-    @State var breed = ""
-    @State var weight = 0
-    //@State  var setAge = 0
-    @State var diet = ""
-    @State var gender: Gender = .male
-    @State var birthDate = Date.now
-    @State var sterile = false
-    @State var age = 0
+    @Forever("pet") var pet = Pet(petName: "Nia", petType: "Dog", breed: "Golden Retriever", weight: 10.0, diet: "Omnivorous", gender: .male, birthDate: Date.now, sterile: false, age: 0)
     @State var displayEditPage1 = false
-    enum Gender: String, CaseIterable, Identifiable {
-        case male, female, nonbinary
-        var id: Self { self }
-    }
     var body: some View {
         NavigationView{
             VStack{
                 List{
-                    Text("Name: \(petName)")
-                    Text("Pet Type: \(petType)")
-                    Text("Pet Breed: \( breed)")
-                    Text("Weight: \(weight)")
-                    Text("Diet: \(diet)")
-                    Text("Gender: \(gender)")
-                    Text("Date of Birth: \(birthDate)")
-                    Text("Sterile: \(sterile ? "Yes" : "No")")
-                    Text("Age: \(age)")
+                    Text("Name: \(pet.petName)")
+                    Text("Pet Type: \(pet.petType)")
+                    Text("Pet Breed: \(pet.breed)")
+                    Text("Weight: \(pet.weight)kg")
+                    Text("Diet: \(pet.diet)")
+                    Text("Gender: \(pet.gender)")
+                    Text("Date of Birth: \(pet.birthDate)")
+                    Text("Sterile: \(pet.sterile ? "Yes" : "No")")
+                    Text("Age: \(pet.age)")
+                }
+                NavigationLink{
+                    PassportScreen2()
+                }label:{
+                    Text("View Health Info")
+                        .background(.blue)
                 }
             }
             .navigationTitle("Pet Passport")
@@ -49,7 +41,9 @@ struct PassportScreen1: View {
                 }
             }
             .onAppear(){
-                age = yearsBetweenDate(startDate: birthDate, endDate: Date())
+                pet.age = yearsBetweenDate(startDate: pet.birthDate, endDate: Date())
+            }
+            .sheet(isPresented: $displayEditPage1){ PassportEditView()
             }
         }
     }
