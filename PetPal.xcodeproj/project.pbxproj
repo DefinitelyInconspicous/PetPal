@@ -18,6 +18,7 @@
 		5AF1D7DE2C67078800A81E3D /* Forever in Frameworks */ = {isa = PBXBuildFile; productRef = 5AF1D7DD2C67078800A81E3D /* Forever */; };
 		5AF1D7E02C6707BD00A81E3D /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1D7DF2C6707BD00A81E3D /* PhotoManager.swift */; };
 		5AF1D7E22C6707C300A81E3D /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1D7E12C6707C300A81E3D /* UIImage.swift */; };
+		5AF1D7E42C670C9E00A81E3D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1D7E32C670C9E00A81E3D /* SettingsView.swift */; };
 		811E61442C4B4FAB006EFB68 /* PetPalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61432C4B4FAB006EFB68 /* PetPalApp.swift */; };
 		811E61462C4B4FAB006EFB68 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61452C4B4FAB006EFB68 /* ContentView.swift */; };
 		811E61482C4B4FAE006EFB68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811E61472C4B4FAE006EFB68 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		5A7570022C54A6F5007F8021 /* PassportScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportScreen2.swift; sourceTree = "<group>"; };
 		5AF1D7DF2C6707BD00A81E3D /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		5AF1D7E12C6707C300A81E3D /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		5AF1D7E32C670C9E00A81E3D /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = PetPal/SettingsView.swift; sourceTree = SOURCE_ROOT; };
 		811E61402C4B4FAB006EFB68 /* PetPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		811E61432C4B4FAB006EFB68 /* PetPalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetPalApp.swift; sourceTree = "<group>"; };
 		811E61452C4B4FAB006EFB68 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				811E61452C4B4FAB006EFB68 /* ContentView.swift */,
 				5A756FF82C4B6E9C007F8021 /* Pet Registration */,
 				819051F42C4B52F8008C007E /* Home Page.swift */,
+				5AF1D7E32C670C9E00A81E3D /* SettingsView.swift */,
 				811E61472C4B4FAE006EFB68 /* Assets.xcassets */,
 				811E61492C4B4FAE006EFB68 /* Preview Content */,
 			);
@@ -211,6 +214,7 @@
 				040D9AB22C66096B005A6876 /* PhotoDetailView.swift in Sources */,
 				047900C02C549D13008F6513 /* PetographyView.swift in Sources */,
 				5AF1D7E02C6707BD00A81E3D /* PhotoManager.swift in Sources */,
+				5AF1D7E42C670C9E00A81E3D /* SettingsView.swift in Sources */,
 				811E61462C4B4FAB006EFB68 /* ContentView.swift in Sources */,
 				5A7570032C54A6F5007F8021 /* PassportScreen2.swift in Sources */,
 				5A7570012C548F9E007F8021 /* PassportScreen1.swift in Sources */,
