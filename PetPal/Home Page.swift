@@ -38,7 +38,8 @@ struct Home_Page: View {
                     Spacer()
                     
                     // MARK: - Add Daily Sticker
-                    
+                  
+                    Spacer()
                     Text("Pal")
                         .font(Font.system(size:60, design: .rounded))
                         .fontWeight(.heavy)
@@ -82,62 +83,88 @@ struct Home_Page: View {
                 .cornerRadius(20)
                 .padding()
               
-                
-                HStack {
-                    
-                    NavigationLink {
-                        PetographyView()
-                            .environmentObject(photoManager)
-                    } label: {
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
-                                .cornerRadius(20)
-                                .frame(width: 150, height: 120)
-                            VStack {
-                                HStack {
-                                    Image(systemName: "flame.fill")
+                VStack {
+                    HStack {
+                        
+                        NavigationLink {
+                            PetographyView()
+                                .environmentObject(photoManager)
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
+                                    .cornerRadius(20)
+                                    .frame(width: 150, height: 120)
+                                VStack {
+                                    HStack {
+                                        Image(systemName: "flame.fill")
+                                            .foregroundStyle(.black)
+                                            .font(.system(size: 50))
+                                        Text("\(streakDays) \n Days")
+                                            .foregroundStyle(.black)
+                                            .fontWeight(.semibold)
+                                    }
+                                    Text("Petography")
                                         .foregroundStyle(.black)
-                                        .font(.system(size: 50))
-                                    Text("\(streakDays) \n Days")
-                                        .foregroundStyle(.black)
-                                        .fontWeight(.semibold)
+                                        .bold()
+                                        .font(.title2)
                                 }
-                                Text("Petography")
-                                    .foregroundStyle(.black)
-                                    .bold()
-                                    .font(.title2)
                             }
+                            
+                        }
+                        NavigationLink {
+                            SettingsView()
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
+                                    .cornerRadius(20)
+                                    .frame(width: 150, height: 120)
+                                VStack(alignment: .center) {
+                                    HStack {
+                                        Image(systemName: "gear")
+                                            .foregroundStyle(.black)
+                                            .font(.system(size: 50))
+                                    }
+                                    Text("Settings")
+                                        .foregroundStyle(.black)
+                                        .bold()
+                                        .font(.title2)
+                                }
+                                //.frame(width: 150, height: 120)
+                                
+                            }
+                            
                         }
                         
                     }
-                    NavigationLink {
-                        PetographyView()
-                            .environmentObject(photoManager)
-                    } label: {
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
-                                .cornerRadius(20)
-                                .frame(width: 150, height: 120)
-                            VStack {
-                                HStack {
-                                    Image(systemName: "flame.fill")
+                    HStack {
+                        NavigationLink {
+                            PassportScreen1()
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
+                                    .cornerRadius(20)
+                                    .frame(width: 150, height: 120)
+                                VStack(alignment: .center) {
+                                    HStack {
+                                        Image(systemName: "book.fill")
+                                            .foregroundStyle(.black)
+                                            .font(.system(size: 50))
+                                    }
+                                    Text("Passport")
                                         .foregroundStyle(.black)
-                                        .font(.system(size: 50))
-                                    Text("\(streakDays) \n Days")
-                                        .foregroundStyle(.black)
-                                        .fontWeight(.semibold)
+                                        .bold()
+                                        .font(.title2)
                                 }
-                                Text("Petography")
-                                    .foregroundStyle(.black)
-                                    .bold()
-                                    .font(.title2)
+                                //.frame(width: 150, height: 120)
+                                
                             }
+                            
                         }
-                        
+
                     }
-                    
                 }
             }
             
