@@ -64,7 +64,7 @@ struct Home_Page: View {
                                 x: .value("Date", timeGraph[index]),
                                 y: .value("Weight", weightGraph[index])
                             )
-                            .foregroundStyle((weightGraph[index] > 27) || (weightGraph[index] < 10) ? Color(red:204/255, green:41/255, blue:0/255) : Color(red: 0/255, green: 0/255, blue: 0/255))
+                            .foregroundStyle((weightGraph[index] >= 27) || (weightGraph[index] <= 10) ? Color(red:204/255, green:41/255, blue:0/255) : Color(red: 0/255, green: 0/255, blue: 0/255))
                         }
                     }
                     .frame(height: 120)
