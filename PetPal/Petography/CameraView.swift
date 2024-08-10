@@ -10,12 +10,11 @@ import AVFoundation
 
 struct CameraView: View {
     @Environment(\.dismiss) var dismiss
-    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var camera: CameraModel
     @ObservedObject var photoManager: PhotoManager
     @Binding var isActive: Bool
     @State private var showPhotoDetail = false
-    
+
     var body: some View {
         ZStack {
             if camera.isTaken {
@@ -45,7 +44,8 @@ struct CameraView: View {
                     
                     HStack {
                         Button(action: {
-                            showPhotoDetail = true // Go back to PetographyView
+                            // Show PhotoDetailView
+                            showPhotoDetail = true
                         }, label: {
                             Text("Save")
                                 .foregroundColor(.black)
@@ -62,8 +62,8 @@ struct CameraView: View {
                     .background(
                         NavigationLink(
                             destination: PhotoDetailView(photoManager: photoManager, photoData: camera.picData),
-                             isActive: $showPhotoDetail
-                            ){
+                            isActive: $showPhotoDetail
+                        ) {
                             EmptyView()
                         }
                     )
@@ -94,26 +94,25 @@ struct CameraView: View {
             }
         }
         .onChange(of: camera.isSaved) { isSaved in
-                   if isSaved {
-                       // When the photo is saved, go back to PetographyView
-                       dismissToRoot()
-                   }
-               }
-           }
+            if isSaved {
+                dismissToRoot()
+            }
+        }
+    }
 
-           private func dismissToRoot() {
-               DispatchQueue.main.async {
-                   dismiss() // Dismiss the CameraView
-                   if let navigationController = UIApplication.shared.connectedScenes
-                       .compactMap({ $0 as? UIWindowScene })
-                       .flatMap({ $0.windows })
-                       .first(where: { $0.isKeyWindow })?
-                       .rootViewController as? UINavigationController {
-                       navigationController.popToRootViewController(animated: false)
-                   }
-               }
-           }
-       }
+    private func dismissToRoot() {
+        DispatchQueue.main.async {
+            dismiss() // Dismiss the CameraView
+            if let navigationController = UIApplication.shared.connectedScenes
+                .compactMap({ $0 as? UIWindowScene })
+                .flatMap({ $0.windows })
+                .first(where: { $0.isKeyWindow })?
+                .rootViewController as? UINavigationController {
+                navigationController.popToRootViewController(animated: false)
+            }
+        }
+    }
+}
     class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         @Published var isTaken = false
         @Published var session = AVCaptureSession()

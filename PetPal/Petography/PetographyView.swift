@@ -3,21 +3,20 @@ import SwiftUI
 struct PetographyView: View {
     @StateObject private var photoManager = PhotoManager()
     @State private var isCameraActive: Bool = false
-    @StateObject private var camera = CameraModel()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 HStack {
                     Text("Petography")
                         .font(.largeTitle)
                         .bold()
-                        .padding(.leading) // Padding on the left side
+                        .padding(.leading)
                     
-                    Spacer() // Pushes the button to the far right
+                    Spacer()
                     
                     NavigationLink(
-                        destination: CameraView(camera: camera, photoManager: photoManager, isActive: $isCameraActive),
+                        destination: CameraView(camera: CameraModel(), photoManager: photoManager, isActive: $isCameraActive),
                         isActive: $isCameraActive
                     ) {
                         Image(systemName: "camera.fill")
@@ -27,33 +26,41 @@ struct PetographyView: View {
                             .background(Color.white)
                             .clipShape(RoundedRectangle(cornerRadius: 15))
                     }
-                    .padding(.trailing) // Padding on the right side
+                    .padding(.trailing)
                 }
-                .padding([.top, .horizontal]) // Add padding around the HStack
+                .padding([.top, .horizontal])
 
                 Text("Record memories with your pets here, and reminisce the valuable ones with them!")
                     .font(.title2)
                     .multilineTextAlignment(.center)
                     .padding(.bottom)
-                
+
                 ScrollView {
-                    VStack {
-                        ForEach(photoManager.picData, id: \.self) { data in
-                            if let image = UIImage(data: data)?.resized(to: CGSize(width: 200, height: 200)) {
+                    ForEach(photoManager.photos) { photo in
+                        VStack(alignment: .leading) {
+                            if let image = UIImage(data: photo.imageData) {
                                 Image(uiImage: image)
                                     .resizable()
-                                    .aspectRatio(contentMode: .fill)
                                     .frame(width: 200, height: 200)
+                                    .aspectRatio(contentMode: .fit)
                                     .padding()
                             }
+                            Text(photo.title)
+                                .font(.headline)
+                            Text(photo.description)
+                                .font(.subheadline)
+                            Text("Taken on \(photo.dateTime)")
+                                .font(.caption)
                         }
+                        .padding()
                     }
                 }
-                
-                Spacer() // Pushes the content up
+
+                Spacer()
             }
             .onAppear {
-                photoManager.loadPhotos() // Ensure the photoManager picData is updated when the view appears
+                // Load photos when the view appears
+                photoManager.loadPhotos()
             }
         }
     }
