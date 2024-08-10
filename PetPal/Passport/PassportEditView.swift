@@ -6,88 +6,80 @@
 //
 
 import SwiftUI
+import Forever
 
-func yearsBetweenDate(startDate: Date, endDate: Date) -> Int {
-
-    let calendar = Calendar.current
-
-    let components = calendar.dateComponents([.year], from: startDate, to: endDate)
-
-    return components.year!
-}
 
 struct PassportEditView: View {
-    @State var setPetName: String
-    @State var setPetType: String
-    @State var setBreed: String
-    @State var setWeight: Double
-    //@State  var setAge = 0
-    @State var setDiet: String
-    @State var setGender: Gender = .male
-    @State var setBirthDate: Date
-    @State var setSterile: Bool
-    @State var age: Int
-    enum Gender: String, CaseIterable, Identifiable {
-        case male, female, nonbinary
-        var id: Self { self }
-    }
+//    @Binding var setPetName: String
+//    @Binding var setPetType: String
+//    @Binding var setBreed: String
+//    @Binding var setWeight: Double
+//    @Binding var setDiet: String
+//    @Binding var setGender: Gender
+//    @Binding var setBirthDate: Date
+//    @Binding var setSterile: Bool
+//    @Binding var age: Int
+    
+    @Forever("pet") var pet = Pet(petName: "", petType: "", breed: "", weight: 0.0, diet: "", gender: .male, birthDate: Date.now, sterile: false, age: 0)
+    
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         NavigationView{
             VStack{
                 List{
                     LabeledContent {
-                        TextField("Name", text: $setPetName)
+                        TextField("Name", text: $pet.petName)
                     } label: {
-                        Text("Pet Name")
+                        Text("Pet Name:")
                     }
                     LabeledContent {
-                        TextField("Type", text: $setPetType)
+                        TextField("Type", text: $pet.petType)
                     } label: {
-                        Text("Pet Type")
+                        Text("Pet Type:")
                     }
                     LabeledContent {
-                        TextField("Breed", text: $setBreed)
+                        TextField("Breed", text: $pet.breed)
                     } label: {
-                        Text("Pet Breed")
+                        Text("Pet Breed:")
                     }
                     LabeledContent{
-                        Stepper("\(setWeight) kg", value: $setWeight, step: 0.5)
+                        Stepper("\(pet.weight) kg", value: $pet.weight, step: 0.5)
                     }label:{
-                        Text("Weight")
+                        Text("Weight:")
                     }
-                        Text("Age: \(age)")
+                    Text("Age: \(pet.age)")
                     LabeledContent {
-                        TextField("Diet", text: $setDiet)
+                        TextField("Diet", text: $pet.diet)
                     } label: {
-                        Text("Pet Diet")
+                        Text("Pet Diet:")
                     }
-                    Picker(selection: $setGender, label: Text("Gender")){
+                    Picker(selection: $pet.gender, label: Text("Gender")){
                         Text("Male").tag(Gender.male)
                         Text("Female").tag(Gender.female)
                     }
-                    DatePicker(selection: $setBirthDate, in: ...Date.now, displayedComponents: .date) {
+                    DatePicker(selection: $pet.birthDate, in: ...Date.now, displayedComponents: .date) {
                         Text("Select date of birth")
                     }
-                    Toggle("Sterilised", isOn: $setSterile)
+                    Toggle("Sterilised", isOn: $pet.sterile)
                     
                     
                     }
                 Button{
-                                        
+                    presentationMode.wrappedValue
+                        .dismiss()
                 }label:{
                     Text("Save Changes")
-                        .background(.blue)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.blue)
                         .padding()
                 }
             }
         }
         .onAppear(){
-            age = yearsBetweenDate(startDate: setBirthDate, endDate: Date())
+            pet.age = yearsBetweenDate(startDate: pet.birthDate, endDate: Date())
         }
     }
 }
 
 #Preview {
-    PassportEditView(setPetName: "", setPetType: "", setBreed: "", setWeight: 8.0, setDiet: "", setBirthDate: Date(), setSterile: false, age: 10)
+    PassportEditView()
 }

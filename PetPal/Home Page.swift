@@ -22,6 +22,8 @@ struct Home_Page: View {
     @State var weightCount = 0
     @State var streakDays = 0
     @State var col = Color(red: 0/255, green: 0/255, blue: 0/255)
+    @StateObject var camera = CameraModel()
+    @StateObject private var photoManager = PhotoManager()
 
     var body: some View {
         NavigationStack {
@@ -84,7 +86,8 @@ struct Home_Page: View {
                 HStack {
                     
                     NavigationLink {
-                        CameraView()
+                        PetographyView()
+                            .environmentObject(photoManager)
                     } label: {
                         ZStack {
                             Rectangle()
@@ -109,7 +112,8 @@ struct Home_Page: View {
                         
                     }
                     NavigationLink {
-                        CameraView()
+                        PetographyView()
+                            .environmentObject(photoManager)
                     } label: {
                         ZStack {
                             Rectangle()

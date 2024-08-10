@@ -9,180 +9,245 @@ import SwiftUI
 import AVFoundation
 
 struct CameraView: View {
-    @StateObject var camera = CameraModel()
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var camera: CameraModel
+    @ObservedObject var photoManager: PhotoManager
+    @Binding var isActive: Bool
+
     var body: some View {
-        ZStack{
-            CameraPreview(camera: camera)
-                .ignoresSafeArea(.all,edges:.all)
-            
-            VStack{
-                if camera.isTaken{
-                    HStack{
+        ZStack {
+            if camera.isTaken {
+                if let image = UIImage(data: camera.picData) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding()
+                }
+                
+                VStack {
+                    HStack {
                         Spacer()
-                        Button(action:{camera.reTake()}, label:{
+                        Button(action: {
+                            camera.reTake() // Reset the camera for retaking a photo
+                        }, label: {
                             Image(systemName: "arrow.triangle.2.circlepath.camera")
                                 .foregroundColor(.black)
                                 .padding()
                                 .background(Color.white)
                                 .clipShape(Circle())
                         })
-                        .padding(.trailing,10)
+                        .padding(.trailing, 10)
                     }
-                }
-                   
-                Spacer()
-                
-                HStack{
-                    if camera.isTaken{
-                        Button(action:{if !camera.isSaved{camera.savePic()}}, label:{
-                            Text(camera.isSaved ? "Saved": "Save")
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Button(action: {
+                            photoManager.savePhoto(camera.picData) // Save the photo persistently
+                            isActive = false // Go back to PetographyView
+                        }, label: {
+                            Text("Save")
                                 .foregroundColor(.black)
                                 .fontWeight(.semibold)
-                                .padding(.vertical,10)
-                                .padding(.horizontal,20)
+                                .padding(.vertical, 10)
+                                .padding(.horizontal, 20)
                                 .background(Color.white)
                                 .clipShape(Capsule())
                         })
-                                .padding(.leading)
+                        .padding(.leading)
+                        
                         Spacer()
-                    }else{
-                        Button(action:{
-                            camera.takePic()
-                        },label:{
-                            ZStack{
+                    }
+                }
+            } else {
+                CameraPreview(camera: camera)
+                    .ignoresSafeArea(.all, edges: .all)
+                
+                VStack {
+                    Spacer()
+                    
+                    HStack {
+                        Button(action: {
+                            camera.takePic() // Take a picture
+                        }, label: {
+                            ZStack {
                                 Circle()
                                     .fill(Color.white)
-                                    .frame(width:65, height: 65, alignment: .bottom)
+                                    .frame(width: 65, height: 65, alignment: .bottom)
                                 Circle()
                                     .stroke(Color.white, lineWidth: 2)
                                     .frame(width: 75, height: 75)
-                                    
                             }
                         })
                     }
-                    
-                }.frame(height: 75)
+                    .frame(height: 75)
+                }
             }
-        }.onAppear(perform: {
-            camera.Check()
-        })
+        }
     }
 }
-class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
+class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     @Published var isTaken = false
     @Published var session = AVCaptureSession()
     @Published var alert = false
     @Published var output  = AVCapturePhotoOutput()
     @Published var preview: AVCaptureVideoPreviewLayer!
     @Published var isSaved = false
-    @Published var picData = Data(count:0)
-    func Check(){
-        
-        switch AVCaptureDevice.authorizationStatus(for:.video){
-        case.authorized:
-            setUp()
-            return
-        case.notDetermined:
-            AVCaptureDevice.requestAccess(for: .video){ (status) in
-                if status{
-                    self.setUp()
-                }
-            }
-            
-        case .denied:
-            self.alert.toggle()
-            return
-        default:
-            return
-        }
-    }
-    func setUp(){
-        do {
-            self.session.beginConfiguration()
+    @Published var picData = Data()
+    @Published var savedImage: UIImage?
 
-            let device = AVCaptureDevice.default(.builtInDualCamera,for: .video,position: .back)
-            if device != nil {
-                let input = try AVCaptureDeviceInput(device: device!)
-                //checking and adding to session
-                if self.session.canAddInput(input){
-                    self.session.addInput(input)
+    override init() {
+        super.init()
+        DispatchQueue.global(qos: .background).async {
+            self.setUp()
+        }
+    }
+    
+    func Check() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            setUp()
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { status in
+                if status {
+                    DispatchQueue.main.async {
+                        self.setUp()
+                    }
                 }
-                if self.session.canAddOutput(output){
-                    self.session.addOutput(output)
+            }
+        case .denied:
+            DispatchQueue.main.async {
+                self.alert.toggle()
+            }
+        default:
+            break
+        }
+    }
+    
+    func setUp() {
+        DispatchQueue.global(qos: .background).async {
+            do {
+                self.session.beginConfiguration()
+                
+                let device = AVCaptureDevice.default(.builtInDualCamera, for: .video, position: .back)
+                if let device = device {
+                    let input = try AVCaptureDeviceInput(device: device)
+                    if self.session.canAddInput(input) {
+                        self.session.addInput(input)
+                    }
+                    if self.session.canAddOutput(self.output) {
+                        self.session.addOutput(self.output)
+                    }
                 }
+                
                 self.session.commitConfiguration()
+                
+                DispatchQueue.main.async {
+                    self.session.startRunning()
+                }
+            } catch {
+                print("Error setting up camera: \(error.localizedDescription)")
             }
-        } catch{
-            print(error.localizedDescription)
         }
-    
+    }
+
+    func takePic() {
+        DispatchQueue.global(qos: .background).async {
+            guard self.session.isRunning else {
+                print("Session is not running")
+                return
+            }
             
-                        
-            // CHANGE FOR DEVICE
-    }
-    
-    func takePic(){
-        DispatchQueue.global(qos: .background).async{
-            self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
-            self.session.stopRunning()
-            DispatchQueue.main.async {
-                withAnimation{self.isTaken.toggle()}
-            }
+            let settings = AVCapturePhotoSettings()
+            self.output.capturePhoto(with: settings, delegate: self)
         }
     }
-    func reTake(){
-        DispatchQueue.global(qos:.background).async{
-            self.session.startRunning()
+
+    func reTake() {
+        DispatchQueue.global(qos: .background).async {
             DispatchQueue.main.async {
-                withAnimation{self.isTaken.toggle()}
-                //clearing
+                self.session.startRunning()
+            }
+            
+            DispatchQueue.main.async {
+                withAnimation { self.isTaken = false }
                 self.isSaved = false
             }
-            
         }
     }
+    
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        if error != nil{
+        if let error = error {
+            print("Error capturing photo: \(error.localizedDescription)")
             return
         }
-        print("picture taken")
-        guard let imageData = photo.fileDataRepresentation() else{
-            return
-        }
-        self.picData = imageData
-    }
-    func savePic(){
-        let image = UIImage(data: self.picData)!
         
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        print("saved successfully")
-        self.isSaved = true
+        guard let imageData = photo.fileDataRepresentation() else {
+            print("Failed to get image data representation")
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.picData = imageData
+            self.isTaken = true
+        }
     }
-    
+
+    func savePic() {
+        DispatchQueue.global(qos: .background).async {
+            if !self.picData.isEmpty, let image = UIImage(data: self.picData) {
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                DispatchQueue.main.async {
+                    self.savedImage = image
+                    self.isSaved = true
+                }
+            } else {
+                print("No image data available to save.")
+            }
+        }
+    }
 }
-struct CameraPreview: UIViewRepresentable{
     
-    
+import SwiftUI
+import AVFoundation
+
+struct CameraPreview: UIViewRepresentable {
     @ObservedObject var camera: CameraModel
-    
-    func makeUIView(context: Context) -> some UIView {
+
+    func makeUIView(context: Context) -> UIView {
         let view = UIView(frame: UIScreen.main.bounds)
+        view.backgroundColor = .black // Ensure the background is black for a cleaner look
+
+        // Setup camera preview
         camera.preview = AVCaptureVideoPreviewLayer(session: camera.session)
-        camera.preview.frame = view.frame
-        
-        // my own properties
+        camera.preview.frame = view.bounds
         camera.preview.videoGravity = .resizeAspectFill
         view.layer.addSublayer(camera.preview)
-        
-        //starting session
+
+        // Start the camera session
         camera.session.startRunning()
+
         return view
     }
-    
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        
-    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {
+        if camera.isTaken {
+            // Remove all existing layers
+            uiView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+            
+            // Display the captured photo
+            if !camera.picData.isEmpty, let image = UIImage(data: camera.picData) {
+                let imageView = UIImageView(frame: uiView.bounds)
+                imageView.image = image
+                imageView.contentMode = .scaleAspectFill
+                uiView.addSubview(imageView)
+            }
+        } else {
+            // Re-add the camera preview layer if no photo is taken
+            if camera.preview.superlayer == nil {
+                camera.preview.frame = uiView.bounds
+                uiView.layer.addSublayer(camera.preview)
+            }
         }
-#Preview {
-    CameraView()
+    }
 }

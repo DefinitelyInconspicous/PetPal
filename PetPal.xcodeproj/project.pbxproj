@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		047900C02C549D13008F6513 /* PetographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047900BF2C549D13008F6513 /* PetographyView.swift */; };
+		04923CE22C5DDD420055E671 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04923CE12C5DDD420055E671 /* PhotoManager.swift */; };
+		04923CE42C5DE37B0055E671 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04923CE32C5DE37B0055E671 /* UIImage.swift */; };
 		04D0B71D2C4B57E0002478D2 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D0B71C2C4B57E0002478D2 /* CameraView.swift */; };
 		5A756FF72C4B51DA007F8021 /* PetRegistration1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A756FF62C4B51DA007F8021 /* PetRegistration1View.swift */; };
 		5A756FFA2C4B6EE9007F8021 /* PetRegistration2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A756FF92C4B6EE9007F8021 /* PetRegistration2View.swift */; };
 		5A756FFC2C54864A007F8021 /* PassportEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A756FFB2C54864A007F8021 /* PassportEditView.swift */; };
 		5A7570012C548F9E007F8021 /* PassportScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7570002C548F9E007F8021 /* PassportScreen1.swift */; };
 		5A7570032C54A6F5007F8021 /* PassportScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7570022C54A6F5007F8021 /* PassportScreen2.swift */; };
+		5A75700B2C5DD936007F8021 /* Forever in Frameworks */ = {isa = PBXBuildFile; productRef = 5A75700A2C5DD936007F8021 /* Forever */; };
 		811E61442C4B4FAB006EFB68 /* PetPalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61432C4B4FAB006EFB68 /* PetPalApp.swift */; };
 		811E61462C4B4FAB006EFB68 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E61452C4B4FAB006EFB68 /* ContentView.swift */; };
 		811E61482C4B4FAE006EFB68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811E61472C4B4FAE006EFB68 /* Assets.xcassets */; };
@@ -24,6 +27,8 @@
 /* Begin PBXFileReference section */
 		0457FF722C54972000D543C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		047900BF2C549D13008F6513 /* PetographyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetographyView.swift; sourceTree = "<group>"; };
+		04923CE12C5DDD420055E671 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		04923CE32C5DE37B0055E671 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		04D0B71C2C4B57E0002478D2 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		5A756FF62C4B51DA007F8021 /* PetRegistration1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegistration1View.swift; sourceTree = "<group>"; };
 		5A756FF92C4B6EE9007F8021 /* PetRegistration2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegistration2View.swift; sourceTree = "<group>"; };
@@ -43,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A75700B2C5DD936007F8021 /* Forever in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +77,8 @@
 		811E61372C4B4FAB006EFB68 = {
 			isa = PBXGroup;
 			children = (
+				04923CE32C5DE37B0055E671 /* UIImage.swift */,
+				04923CE12C5DDD420055E671 /* PhotoManager.swift */,
 				811E61422C4B4FAB006EFB68 /* PetPal */,
 				811E61412C4B4FAB006EFB68 /* Products */,
 			);
@@ -125,6 +133,9 @@
 			dependencies = (
 			);
 			name = PetPal;
+			packageProductDependencies = (
+				5A75700A2C5DD936007F8021 /* Forever */,
+			);
 			productName = PetPal;
 			productReference = 811E61402C4B4FAB006EFB68 /* PetPal.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +164,9 @@
 				Base,
 			);
 			mainGroup = 811E61372C4B4FAB006EFB68;
+			packageReferences = (
+				5A7570092C5DD936007F8021 /* XCRemoteSwiftPackageReference "Forever" */,
+			);
 			productRefGroup = 811E61412C4B4FAB006EFB68 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -181,12 +195,14 @@
 			files = (
 				5A756FF72C4B51DA007F8021 /* PetRegistration1View.swift in Sources */,
 				04D0B71D2C4B57E0002478D2 /* CameraView.swift in Sources */,
+				04923CE22C5DDD420055E671 /* PhotoManager.swift in Sources */,
 				5A756FFC2C54864A007F8021 /* PassportEditView.swift in Sources */,
 				5A756FFA2C4B6EE9007F8021 /* PetRegistration2View.swift in Sources */,
 				047900C02C549D13008F6513 /* PetographyView.swift in Sources */,
 				811E61462C4B4FAB006EFB68 /* ContentView.swift in Sources */,
 				5A7570032C54A6F5007F8021 /* PassportScreen2.swift in Sources */,
 				5A7570012C548F9E007F8021 /* PassportScreen1.swift in Sources */,
+				04923CE42C5DE37B0055E671 /* UIImage.swift in Sources */,
 				811E61442C4B4FAB006EFB68 /* PetPalApp.swift in Sources */,
 				819051F52C4B52F8008C007E /* Home Page.swift in Sources */,
 			);
@@ -322,6 +338,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PetPal/Preview Content\"";
+				DEVELOPMENT_TEAM = 7H539QRB34;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetPal/Info.plist;
@@ -332,6 +349,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -353,6 +371,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PetPal/Preview Content\"";
+				DEVELOPMENT_TEAM = 7H539QRB34;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PetPal/Info.plist;
@@ -363,6 +382,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -398,6 +418,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A7570092C5DD936007F8021 /* XCRemoteSwiftPackageReference "Forever" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jiachenyee/Forever";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A75700A2C5DD936007F8021 /* Forever */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A7570092C5DD936007F8021 /* XCRemoteSwiftPackageReference "Forever" */;
+			productName = Forever;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 811E61382C4B4FAB006EFB68 /* Project object */;
 }
