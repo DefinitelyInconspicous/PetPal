@@ -86,8 +86,7 @@ struct Home_Page: View {
                 HStack {
                     
                     NavigationLink {
-                        PetographyView()
-                            .environmentObject(photoManager)
+                        PassportScreen1()
                     } label: {
                         ZStack {
                             Rectangle()
@@ -95,15 +94,11 @@ struct Home_Page: View {
                                 .cornerRadius(20)
                                 .frame(width: 150, height: 120)
                             VStack {
-                                HStack {
-                                    Image(systemName: "flame.fill")
-                                        .foregroundStyle(.black)
-                                        .font(.system(size: 50))
-                                    Text("\(streakDays) \n Days")
-                                        .foregroundStyle(.black)
-                                        .fontWeight(.semibold)
-                                }
-                                Text("Petography")
+                                Image(systemName: "person.text.rectangle.fill")
+                                    .foregroundStyle(.black)
+                                    .font(.system(size: 50))
+                                
+                                Text("Passport")
                                     .foregroundStyle(.black)
                                     .bold()
                                     .font(.title2)
