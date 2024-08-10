@@ -62,8 +62,8 @@ struct CameraView: View {
                     .background(
                         NavigationLink(
                             destination: PhotoDetailView(photoManager: photoManager, photoData: camera.picData),
-                            isActive: $showPhotoDetail
-                        ) {
+                             isActive: $showPhotoDetail
+                            ){
                             EmptyView()
                         }
                     )
