@@ -178,6 +178,10 @@ struct Home_Page: View {
             }
             
             Spacer()
+                .onAppear {
+                    // Load photos when the view appears
+                    photoManager.loadPhotos()
+                }
         }
     }
         

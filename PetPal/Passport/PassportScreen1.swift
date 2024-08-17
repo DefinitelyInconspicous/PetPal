@@ -28,26 +28,28 @@ struct PassportScreen1: View {
                 }label:{
                     Text("View Health Info")
                         .padding()
-                        .background(.yellow)
+                        .background(.blue)
+                        .foregroundColor(.white)
                         .buttonStyle(BorderedButtonStyle())
                         .cornerRadius(10)
                         .frame(width: 200, height: 100)
                 }
             }
             .navigationTitle("Pet Passport")
-            .toolbar{
-                ToolbarItem(placement: .topBarLeading){
-                    Button{
-                        displayEditPage1 = true
-                    }label:{
-                        Image(systemName: "pencil")
-                    }
-                }
-            }
+            
             .onAppear(){
                 pet.age = yearsBetweenDate(startDate: pet.birthDate, endDate: Date())
             }
             .sheet(isPresented: $displayEditPage1){ PassportEditView()
+            }
+        }
+        .toolbar{
+            ToolbarItem(placement: .topBarTrailing){
+                Button{
+                    displayEditPage1 = true
+                }label:{
+                    Image(systemName: "pencil")
+                }
             }
         }
     }

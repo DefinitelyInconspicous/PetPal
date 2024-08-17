@@ -3,6 +3,7 @@ import SwiftUI
 struct PetographyView: View {
     @StateObject private var photoManager = PhotoManager()
     @State private var isCameraActive: Bool = false
+    @State private var showlargertitle = false
 
     var body: some View {
         NavigationStack {
@@ -36,26 +37,37 @@ struct PetographyView: View {
                     .padding(.bottom)
 
                 ScrollView {
-                    ForEach(photoManager.photos) { photo in
-                        VStack(alignment: .leading) {
-                            if let image = UIImage(data: photo.imageData) {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .frame(width: 200, height: 200)
-                                    .aspectRatio(contentMode: .fit)
+                            LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 3), spacing: 16) {
+                                ForEach(photoManager.photos) { photo in
+                                    VStack(alignment: .leading) {
+                                        if let image = UIImage(data: photo.imageData) {
+                                            Image(uiImage: image)
+                                                .resizable()
+                                                .frame(width: 100, height: 100)
+                                                .aspectRatio(contentMode: .fill)
+                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                .onTapGesture {
+                                                    showlargertitle = true
+                                                }
+                                        }
+                                        Text(photo.title)
+                                            .font(.headline)
+                                            .lineLimit(1)
+                                            .truncationMode(.tail)
+                                        Text(photo.description)
+                                            .font(.subheadline)
+                                            .lineLimit(2)
+                                            .truncationMode(.tail)
+                                        Text("Taken on \(photo.dateTime)")
+                                            .font(.caption)
+                                    }
                                     .padding()
+                                }
                             }
-                            Text(photo.title)
-                                .font(.headline)
-                            Text(photo.description)
-                                .font(.subheadline)
-                            Text("Taken on \(photo.dateTime)")
-                                .font(.caption)
-                        }
-                        .padding()
-                    }
-                }
-
+                            .padding()
+                }.sheet(isPresented: $showlargertitle, content: {
+                    EnlargedView()
+                })
                 Spacer()
             }
             .onAppear {
