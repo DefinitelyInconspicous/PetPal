@@ -8,7 +8,7 @@
 import SwiftUI
 import Forever
 struct PassportScreen2: View {
-    @Forever("medInfo") var medInfo = PetMedicalConditions(allergies: ["Chocolate"], healthIssues: ["Obesity"], medications: ["Opium"])
+    @Forever("medInfo") var medInfo = PetMedicalConditions(allergies: ["Peanuts"], healthIssues: ["Obesity"], medications: ["Panadol"])
     @State var editToggle = false
     var body: some View {
         NavigationView{
