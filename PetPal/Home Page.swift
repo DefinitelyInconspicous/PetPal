@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Forever
 import Charts
 
 struct weightCell {
@@ -16,10 +17,9 @@ struct Home_Page: View {
     var textColour = Color(red: 34 / 255, green: 53 / 255, blue: 64 / 255)
     var rectColour = Color(red: 242/255, green: 241/255, blue: 216/255)
     @State var username = "John"
-    var weightGraph: [Double] = [20,23,18,28,32,14,29,90,49,34,46,29,19,20,28,38,41,49,46,54,61]
-    @State var timeGraph = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]
     @State var weightData: [weightCell]
     @State var weightCount = 0
+    @Forever("weightg") var weightG: [data] = []
     @State var streakDays = 0
     @State var col = Color(red: 0/255, green: 0/255, blue: 0/255)
     @StateObject var camera = CameraModel()
@@ -71,10 +71,10 @@ struct Home_Page: View {
                     Chart {
                         ForEach(0..<20, id: \.self ) { index in
                             LineMark(
-                                x: .value("Date", timeGraph[index]),
-                                y: .value("Weight", weightGraph[index])
+                                x: .value("Date", weightG.count > 1 ? weightG[index].weigh : 0),
+                                y: .value("Weight",weightG.count > 1 ? weightG[index].time : 0)
                             )
-                            .foregroundStyle((weightGraph[index] >= 27) || (weightGraph[index] <= 10) ? Color(red:204/255, green:41/255, blue:0/255) : Color(red: 0/255, green: 0/255, blue: 0/255))
+                          //  .foregroundStyle((weightG[index] >= 27) || (weightG[index] <= 10) ? Color(red:204/255, green:41/255, blue:0/255) : Color(red: 0/255, green: 0/255, blue: 0/255))
                         }
                     }
                     .frame(height: 120)
