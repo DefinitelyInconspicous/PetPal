@@ -16,11 +16,14 @@ struct weightCell {
 struct Home_Page: View {
     var textColour = Color(red: 34 / 255, green: 53 / 255, blue: 64 / 255)
     var rectColour = Color(red: 242/255, green: 241/255, blue: 216/255)
-    @State var username = "John"
+    @State var username = "Benji"
+    var weightGraph: [Double] = [20,23,18,28,32,14,29,90,49,34,46,29,19,20,28,38,41,49,46,54,61]
+    @State var timeGraph = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]
     @State var weightData: [weightCell]
     @State var weightCount = 0
     @Forever("weightg") var weightG: [data] = []
     @State var streakDays = 0
+    @State var streakDays = 2
     @State var col = Color(red: 0/255, green: 0/255, blue: 0/255)
     @StateObject var camera = CameraModel()
     @StateObject private var photoManager = PhotoManager()

@@ -57,6 +57,7 @@ struct PassportEditView: View {
                         Text("Weight:")
                     }
                     Text("Age: \(pet.age)")
+                    
                     LabeledContent {
                         TextField("Diet", text: $pet.diet)
                     } label: {
