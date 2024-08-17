@@ -36,7 +36,16 @@ struct Home_Page: View {
                         .padding()
                         .foregroundColor(textColour)
                     Spacer()
-                    
+                    if let lastPhoto = photoManager.photos.last, let image = UIImage(data: lastPhoto.imageData) {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle())
+                            .padding()
+                        
+                    } else {
+                        Text("No photos available")
+                    }
                     // MARK: - Add Daily Sticker
                   
                     Spacer()

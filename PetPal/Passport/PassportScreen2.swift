@@ -14,9 +14,20 @@ struct PassportScreen2: View {
         NavigationView{
             VStack{
                 List{
-                    Section(header:Text("Allergies")){
+                    Section(){
                         ForEach(0..<medInfo.allergies.count){allergy in
                             Text(medInfo.allergies[allergy])
+                        }
+                        
+                    } header: {
+                        HStack {
+                            Text("Allergies")
+                            Spacer()
+                            Button {
+                                
+                            } label: {
+                                Image(systemName:"plus")
+                            }
                         }
                     }
                     Section(header:Text("Health Issues")){
@@ -31,17 +42,6 @@ struct PassportScreen2: View {
                     }
                 }
             }
-            .toolbar{
-                            ToolbarItemGroup(placement: .navigationBarTrailing){
-                                EditButton()
-                                Button{
-                                    editToggle = true
-                                } label: {
-                                    Image(systemName: "plus")
-                                }
-                            }
-                            
-                        }
         }
     }
 }
