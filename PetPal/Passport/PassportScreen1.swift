@@ -29,7 +29,7 @@ struct PassportScreen1: View {
                     Text("View Health Info")
                         .padding()
                         .background(.blue)
-                        .background(.white)
+                        .foregroundColor(.white)
                         .buttonStyle(BorderedButtonStyle())
                         .cornerRadius(10)
                         .frame(width: 200, height: 100)
@@ -44,7 +44,7 @@ struct PassportScreen1: View {
             }
         }
         .toolbar{
-            ToolbarItem(placement: .topBarLeading){
+            ToolbarItem(placement: .topBarTrailing){
                 Button{
                     displayEditPage1 = true
                 }label:{
