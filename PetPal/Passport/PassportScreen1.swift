@@ -27,7 +27,11 @@ struct PassportScreen1: View {
                     PassportScreen2()
                 }label:{
                     Text("View Health Info")
-                        .background(.blue)
+                        .padding()
+                        .background(.yellow)
+                        .buttonStyle(BorderedButtonStyle())
+                        .cornerRadius(10)
+                        .frame(width: 200, height: 100)
                 }
             }
             .navigationTitle("Pet Passport")

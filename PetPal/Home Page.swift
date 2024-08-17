@@ -24,7 +24,7 @@ struct Home_Page: View {
     @State var col = Color(red: 0/255, green: 0/255, blue: 0/255)
     @StateObject var camera = CameraModel()
     @StateObject private var photoManager = PhotoManager()
-    
+
     var body: some View {
         NavigationStack {
             VStack{
@@ -36,18 +36,10 @@ struct Home_Page: View {
                         .padding()
                         .foregroundColor(textColour)
                     Spacer()
-                    if let lastPhoto = photoManager.photos.last, let image = UIImage(data: lastPhoto.imageData) {
-                        Image(uiImage: image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(Circle())
-                            .padding()
-                        
-                    } else {
-                        Text("No photos available")
-                    }
-                    // MARK: - Add Daily Sticker
                     
+                    // MARK: - Add Daily Sticker
+                  
+                    Spacer()
                     Text("Pal")
                         .font(Font.system(size:60, design: .rounded))
                         .fontWeight(.heavy)
@@ -55,110 +47,132 @@ struct Home_Page: View {
                         .padding()
                         .foregroundColor(textColour)
                 }
-            }
-            Rectangle()
-                .frame(height: 4)
-                .foregroundColor(textColour)
-            Text("Welcome Back \(username)!")
-                .font(.title2)
-                .fontWeight(.medium)
-            
-            
-            VStack {
-                Text("Your Pet's Weight over the Months")
-                    .font(.headline)
-                    .foregroundStyle(.black)
-                Chart {
-                    ForEach(0..<20, id: \.self ) { index in
-                        LineMark(
-                            x: .value("Date", timeGraph[index]),
-                            y: .value("Weight", weightGraph[index])
-                        )
-                        .foregroundStyle((weightGraph[index] >= 27) || (weightGraph[index] <= 10) ? Color(red:204/255, green:41/255, blue:0/255) : Color(red: 0/255, green: 0/255, blue: 0/255))
-                    }
-                }
-                .frame(height: 120)
-                //                    .onAppear() {
-                //                        if (weightGraph[index] > 27) || (weightGraph[index] < 10) {
-                //                            col = Color(red:204/255, green:41/255, blue:0/255)
-                //                        } else {
-                //                             col = Color(red: 0/255, green: 0/255, blue: 0/255)
-                //                        }
-                //                    }
+                Rectangle()
+                    .frame(height: 4)
+                    .foregroundColor(textColour)
+                Text("Welcome Back \(username)!")
+                    .font(.title2)
+                    .fontWeight(.medium)
                 
-            }
-            .padding()
-            .background(rectColour)
-            .cornerRadius(20)
-            .padding()
-            
-            
-            HStack {
                 
-                NavigationLink {
-                    PetographyView()
-                        .environmentObject(photoManager)
-                } label: {
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
-                            .cornerRadius(20)
-                            .frame(width: 150, height: 120)
-                        VStack {
-                            HStack {
-                                Image(systemName: "flame.fill")
-                                    .foregroundStyle(.black)
-                                    .font(.system(size: 50))
-                                Text("\(streakDays) \n Days")
-                                    .foregroundStyle(.black)
-                                    .fontWeight(.semibold)
-                            }
-                            Text("Petography")
-                                .foregroundStyle(.black)
-                                .bold()
-                                .font(.title2)
+                VStack {
+                    Text("Your Pet's Weight over the Months")
+                        .font(.headline)
+                        .foregroundStyle(.black)
+                    Chart {
+                        ForEach(0..<20, id: \.self ) { index in
+                            LineMark(
+                                x: .value("Date", timeGraph[index]),
+                                y: .value("Weight", weightGraph[index])
+                            )
+                            .foregroundStyle((weightGraph[index] >= 27) || (weightGraph[index] <= 10) ? Color(red:204/255, green:41/255, blue:0/255) : Color(red: 0/255, green: 0/255, blue: 0/255))
                         }
                     }
+                    .frame(height: 120)
+//                    .onAppear() {
+//                        if (weightGraph[index] > 27) || (weightGraph[index] < 10) {
+//                            col = Color(red:204/255, green:41/255, blue:0/255)
+//                        } else {
+//                             col = Color(red: 0/255, green: 0/255, blue: 0/255)
+//                        }
+//                    }
                     
                 }
-                NavigationLink {
-                    PetographyView()
-                        .environmentObject(photoManager)
-                } label: {
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
-                            .cornerRadius(20)
-                            .frame(width: 150, height: 120)
-                        VStack {
-                            HStack {
-                                Image(systemName: "flame.fill")
-                                    .foregroundStyle(.black)
-                                    .font(.system(size: 50))
-                                Text("\(streakDays) \n Days")
-                                    .foregroundStyle(.black)
-                                    .fontWeight(.semibold)
+                .padding()
+                .background(rectColour)
+                .cornerRadius(20)
+                .padding()
+              
+                VStack {
+                    HStack {
+                        
+                        NavigationLink {
+                            PetographyView()
+                                .environmentObject(photoManager)
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
+                                    .cornerRadius(20)
+                                    .frame(width: 150, height: 120)
+                                VStack {
+                                    HStack {
+                                        Image(systemName: "flame.fill")
+                                            .foregroundStyle(.black)
+                                            .font(.system(size: 50))
+                                        Text("\(streakDays) \n Days")
+                                            .foregroundStyle(.black)
+                                            .fontWeight(.semibold)
+                                    }
+                                    Text("Petography")
+                                        .foregroundStyle(.black)
+                                        .bold()
+                                        .font(.title2)
+                                }
                             }
-                            Text("Petography")
-                                .foregroundStyle(.black)
-                                .bold()
-                                .font(.title2)
+                            
                         }
+                        NavigationLink {
+                            SettingsView()
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
+                                    .cornerRadius(20)
+                                    .frame(width: 150, height: 120)
+                                VStack(alignment: .center) {
+                                    HStack {
+                                        Image(systemName: "gear")
+                                            .foregroundStyle(.black)
+                                            .font(.system(size: 50))
+                                    }
+                                    Text("Settings")
+                                        .foregroundStyle(.black)
+                                        .bold()
+                                        .font(.title2)
+                                }
+                                //.frame(width: 150, height: 120)
+                                
+                            }
+                            
+                        }
+                        
                     }
-                    
-                }
-                
-            }
-        }
-        
-        Spacer()
-            .onAppear {
-                // Load photos when the view appears
-                photoManager.loadPhotos()
-            }
-    }
-}
+                    HStack {
+                        NavigationLink {
+                            PassportScreen1()
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(Color(red: 186/255, green: 213/255, blue: 201/255))
+                                    .cornerRadius(20)
+                                    .frame(width: 150, height: 120)
+                                VStack(alignment: .center) {
+                                    HStack {
+                                        Image(systemName: "book.fill")
+                                            .foregroundStyle(.black)
+                                            .font(.system(size: 50))
+                                    }
+                                    Text("Passport")
+                                        .foregroundStyle(.black)
+                                        .bold()
+                                        .font(.title2)
+                                }
+                                //.frame(width: 150, height: 120)
+                                
+                            }
+                            
+                        }
 
+                    }
+                }
+            }
+            
+            Spacer()
+        }
+    }
+        
+}
 
 
 #Preview {
