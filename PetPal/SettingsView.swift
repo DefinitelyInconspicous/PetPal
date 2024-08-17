@@ -34,7 +34,7 @@ struct SettingsView: View {
                             content.sound = UNNotificationSound.default
                             
                             // show this notification five seconds from now
-                            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1800, repeats: true)
+                            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 43200, repeats: true)
                             
                             // choose a random identifier
                             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
