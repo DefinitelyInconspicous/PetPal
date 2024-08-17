@@ -7,7 +7,7 @@
 import SwiftUI
 import Forever
 struct PassportScreen1: View {
-    @Forever("pet") var pet = Pet(petName: "Nia", petType: "Dog", breed: "Golden Retriever", weight: 10.0, diet: "Omnivorous", gender: .male, birthDate: Date.now, sterile: false, age: 0)
+    @Forever("pet") var pet = Pet(petName: "Rufus", petType: "Dog", breed: "Golden Retriever", weight: 10.0, diet: "Omnivorous", gender: .male, birthDate: Date.now, sterile: false, age: 0)
     @State var displayEditPage1 = false
     var body: some View {
         NavigationView{

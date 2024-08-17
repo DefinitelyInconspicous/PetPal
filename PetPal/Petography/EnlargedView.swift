@@ -8,11 +8,36 @@
 import SwiftUI
 
 struct EnlargedView: View {
+    @StateObject private var photoManager = PhotoManager()
+    var photo: Photo
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if let image = UIImage(data: photo.imageData) {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding()
+            }
+            Text(photo.title)
+                .font(.largeTitle)
+                .padding()
+
+            Text(photo.description)
+                .font(.body)
+                .padding()
+
+            Text("Taken on \(photo.dateTime)")
+                .font(.caption)
+                .padding()
+
+            Spacer()
+        }
+        .padding()
+        .onAppear {
+            // Load photos when the view appears
+            photoManager.loadPhotos()
+        }
     }
 }
 
-#Preview {
-    EnlargedView()
-}

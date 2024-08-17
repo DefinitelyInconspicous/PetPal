@@ -4,6 +4,7 @@ struct PetographyView: View {
     @StateObject private var photoManager = PhotoManager()
     @State private var isCameraActive: Bool = false
     @State private var showlargertitle = false
+    @State private var selectedPhoto: Photo? = nil
 
     var body: some View {
         NavigationStack {
@@ -47,6 +48,7 @@ struct PetographyView: View {
                                                 .aspectRatio(contentMode: .fill)
                                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                                 .onTapGesture {
+                                                    selectedPhoto = photo
                                                     showlargertitle = true
                                                 }
                                         }
@@ -65,9 +67,12 @@ struct PetographyView: View {
                                 }
                             }
                             .padding()
-                }.sheet(isPresented: $showlargertitle, content: {
-                    EnlargedView()
-                })
+                }.sheet(isPresented: $showlargertitle) {
+                    if let selectedPhoto = selectedPhoto {
+                        EnlargedView(photo: selectedPhoto)
+                    }
+                }
+
                 Spacer()
             }
             .onAppear {
