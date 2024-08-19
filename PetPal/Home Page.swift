@@ -22,12 +22,11 @@ struct Home_Page: View {
     @State var weightData: [weightCell]
     @State var weightCount = 0
     @Forever("weightg") var weightG: [data] = []
-    @State var streakDays = 0
     @State var streakDays = 2
     @State var col = Color(red: 0/255, green: 0/255, blue: 0/255)
     @StateObject var camera = CameraModel()
     @StateObject private var photoManager = PhotoManager()
-
+    let placeholder = "placeholder"
     var body: some View {
         NavigationStack {
             VStack{
@@ -47,7 +46,7 @@ struct Home_Page: View {
                             .padding()
                         
                     } else {
-                        Text("No photos available")
+                        Image(placeholder)
                     }
                     // MARK: - Add Daily Sticker
                   
@@ -77,7 +76,7 @@ struct Home_Page: View {
                                 x: .value("Date", weightG.count > 1 ? weightG[index].weigh : 0),
                                 y: .value("Weight",weightG.count > 1 ? weightG[index].time : 0)
                             )
-                          //  .foregroundStyle((weightG[index] >= 27) || (weightG[index] <= 10) ? Color(red:204/255, green:41/255, blue:0/255) : Color(red: 0/255, green: 0/255, blue: 0/255))
+                            //.foregroundStyle((weightG[index] >= 27) || (weightG[index] <= 10) ? Color(red:204/255, green:41/255, blue:0/255) : Color(red: 0/255, green: 0/255, blue: 0/255))
                         }
                     }
                     .frame(height: 120)
