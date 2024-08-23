@@ -57,6 +57,11 @@ struct HomePage: View {
                                                     .padding(.horizontal, 10)
                     } else {
                         Image(placeholder)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Circle())
+                            .frame(width: 80, height: 80) // Adjust image size
+                            .padding(.horizontal, 10)
                     }
                     Spacer(minLength: 0) // Reduce space between elements
                     Text("Pal")
