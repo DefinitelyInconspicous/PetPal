@@ -17,6 +17,7 @@
 		5A7570032C54A6F5007F8021 /* PassportScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7570022C54A6F5007F8021 /* PassportScreen2.swift */; };
 		5A869AC22C703A0B00CD8BEA /* HealthInfoEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A869AC12C703A0B00CD8BEA /* HealthInfoEditScreen.swift */; };
 		5A869AC42C70461900CD8BEA /* EnlargedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A869AC32C70461900CD8BEA /* EnlargedView.swift */; };
+		5A869ACA2C78F2E600CD8BEA /* SlateBlankerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A869AC92C78F2E600CD8BEA /* SlateBlankerView.swift */; };
 		5AF1D7E02C6707BD00A81E3D /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1D7DF2C6707BD00A81E3D /* PhotoManager.swift */; };
 		5AF1D7E22C6707C300A81E3D /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1D7E12C6707C300A81E3D /* UIImage.swift */; };
 		5AF1D7E42C670C9E00A81E3D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1D7E32C670C9E00A81E3D /* SettingsView.swift */; };
@@ -40,6 +41,7 @@
 		5A7570022C54A6F5007F8021 /* PassportScreen2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportScreen2.swift; sourceTree = "<group>"; };
 		5A869AC12C703A0B00CD8BEA /* HealthInfoEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoEditScreen.swift; sourceTree = "<group>"; };
 		5A869AC32C70461900CD8BEA /* EnlargedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnlargedView.swift; sourceTree = "<group>"; };
+		5A869AC92C78F2E600CD8BEA /* SlateBlankerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlateBlankerView.swift; sourceTree = "<group>"; };
 		5AF1D7DF2C6707BD00A81E3D /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		5AF1D7E12C6707C300A81E3D /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		5AF1D7E32C670C9E00A81E3D /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = PetPal/SettingsView.swift; sourceTree = SOURCE_ROOT; };
@@ -124,6 +126,7 @@
 				819051F42C4B52F8008C007E /* Home Page.swift */,
 				5AF1D7E32C670C9E00A81E3D /* SettingsView.swift */,
 				811E61472C4B4FAE006EFB68 /* Assets.xcassets */,
+				5A869AC92C78F2E600CD8BEA /* SlateBlankerView.swift */,
 				811E61492C4B4FAE006EFB68 /* Preview Content */,
 			);
 			path = PetPal;
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A869ACA2C78F2E600CD8BEA /* SlateBlankerView.swift in Sources */,
 				5A756FF72C4B51DA007F8021 /* PetRegistration1View.swift in Sources */,
 				04D0B71D2C4B57E0002478D2 /* CameraView.swift in Sources */,
 				5A756FFC2C54864A007F8021 /* PassportEditView.swift in Sources */,

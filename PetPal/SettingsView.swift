@@ -13,6 +13,9 @@ struct SettingsView: View {
     @Forever("notifications") var notifications = false
     @Forever("cameraAccess") var cameraAccess = false
     @Forever("photoAccess") var photoAccess = false
+    @Forever("pet") var pet = Pet(petName: "Rufus", petType: "Dog", breed: "Golden Retriever", weight: 10.0, diet: "Omnivorous", gender: .male, birthDate: Date.now, sterile: false, age: 0)
+    @Forever("weightg") var weightG: [data] = []
+    @Forever("medInfo") var medInfo = PetMedicalConditions(allergies: [], healthIssues: [], medications: [])
     var body: some View {
         NavigationView{
             List{
@@ -22,6 +25,13 @@ struct SettingsView: View {
                 Section{
                     Toggle("Allow Access To Camera", isOn: $cameraAccess)
                     Toggle("Allow Access To Photos", isOn: $photoAccess)
+                }
+                Section{
+                    NavigationLink{
+                        SlateBlankerView()
+                    }label:{
+                        Text("Blank the Slate")
+                    }
                 }
             }.onChange(of: notifications) { _ in
                 if notifications == true{
@@ -46,9 +56,7 @@ struct SettingsView: View {
                         }
                     }
                 }
-                
-                    
-                }
+            }
         }
     }
 }
