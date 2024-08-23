@@ -1,21 +1,17 @@
-//
-//  Home Page.swift
-//  PetPal
-//
-//  Created by Avyan Mehra on 20/7/24.
-//
-
 import SwiftUI
 import Forever
 import Charts
 
-struct weightCell {
+struct WeightCell: Identifiable, Encodable, Decodable {
+    var id = UUID()
     var weight: Int
-    var date: Int
+    var date: Date
 }
-struct Home_Page: View {
+
+struct HomePage: View {
     var textColour = Color(red: 34 / 255, green: 53 / 255, blue: 64 / 255)
     var rectColour = Color(red: 242/255, green: 241/255, blue: 216/255)
+    
     @State var username = "Benji"
     //var weightGraph: [Double] = [20,23,18,28,32,14,29,90,49,34,46,29,19,20,28,38,41,49,46,54,61]
     //@State var timeGraph = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]

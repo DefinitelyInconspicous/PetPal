@@ -9,7 +9,7 @@ import SwiftUI
 import Forever
 
 struct data: Decodable, Encodable {
-    var weigh: Double
+    var weight: Double
     var time: Int
 }
 
@@ -24,7 +24,7 @@ struct PassportEditView: View {
 //    @Binding var setSterile: Bool
 //    @Binding var age: Int
     
-    @Forever("pet") var pet = Pet(petName: "", petType: "", breed: "", weight: 0.0, diet: "", gender: .male, birthDate: Date.now, sterile: false, age: 0)
+    @Forever("pet") var pet = Pet(petName: "", petType: "", breed: "", weight: 10.0, diet: "", gender: .male, birthDate: Date.now, sterile: false, age: 0)
     @Forever("weightg") var weightg: [data] = []
     @State var time = 0
     @Environment(\.presentationMode) var presentationMode
@@ -50,7 +50,7 @@ struct PassportEditView: View {
                     LabeledContent{
                         Stepper("\(pet.weight) kg", value: $pet.weight, step: 0.5)
                             .onChange(of: pet.weight) { _ in
-                                weightg.append(data(weigh: pet.weight, time: time+1))
+                                weightg.append(data(weight: pet.weight, time: time+1))
                                 time += 1
                             }
                     }label:{
