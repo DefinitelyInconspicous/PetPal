@@ -77,6 +77,7 @@ struct PassportEditView: View {
                 Button{
                     presentationMode.wrappedValue
                         .dismiss()
+                    weightg.append(data(weigh: pet.weight, time: weightg.count+1))
                 }label:{
                     Text("Save Changes")
                         .foregroundStyle(.blue)

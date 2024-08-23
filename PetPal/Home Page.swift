@@ -17,16 +17,16 @@ struct Home_Page: View {
     var textColour = Color(red: 34 / 255, green: 53 / 255, blue: 64 / 255)
     var rectColour = Color(red: 242/255, green: 241/255, blue: 216/255)
     @State var username = "Benji"
-    var weightGraph: [Double] = [20,23,18,28,32,14,29,90,49,34,46,29,19,20,28,38,41,49,46,54,61]
-    @State var timeGraph = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]
-    @State var weightData: [weightCell]
+    //var weightGraph: [Double] = [20,23,18,28,32,14,29,90,49,34,46,29,19,20,28,38,41,49,46,54,61]
+    //@State var timeGraph = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]
+    //@State var weightData: [weightCell]
     @State var weightCount = 0
     @Forever("weightg") var weightG: [data] = []
     @State var streakDays = 2
     @State var col = Color(red: 0/255, green: 0/255, blue: 0/255)
     @StateObject var camera = CameraModel()
     @StateObject private var photoManager = PhotoManager()
-    let placeholder = "placeholder"
+    let placeholder = ["placeholder", "placeholder2"]
     var body: some View {
         NavigationStack {
             VStack{
@@ -46,7 +46,11 @@ struct Home_Page: View {
                             .padding()
                         
                     } else {
-                        Image(placeholder)
+                        Image(placeholder[Int.random(in: 0..<placeholder.count)])
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle())
+                            .padding()
                     }
                     // MARK: - Add Daily Sticker
                   
@@ -71,7 +75,7 @@ struct Home_Page: View {
                         .font(.headline)
                         .foregroundStyle(.black)
                     Chart {
-                        ForEach(0..<20, id: \.self ) { index in
+                        ForEach(0..<weightG.count, id: \.self ) { index in
                             LineMark(
                                 x: .value("Date", weightG.count > 1 ? weightG[index].weigh : 0),
                                 y: .value("Weight",weightG.count > 1 ? weightG[index].time : 0)
@@ -191,7 +195,7 @@ struct Home_Page: View {
 
 
 #Preview {
-    Home_Page(weightData: [weightCell(weight: 0, date: 0)])
+    Home_Page()
 }
 
 
